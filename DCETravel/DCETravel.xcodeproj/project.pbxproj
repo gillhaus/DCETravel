@@ -1,0 +1,921 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0056A3F9FC65488C335291EB /* ServiceContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52056EE9BB54B16069B8EC2 /* ServiceContainer.swift */; };
+		02BC1C1596DADC44A2D33967 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744B8DFBCD9C0B16CC9AC958 /* Trip.swift */; };
+		0B9A8F7E6D5C4B3A2F1E0D9C /* RestaurantHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D0E1F2A3B4C5D6E7F8A9B0 /* RestaurantHandler.swift */; };
+		0BE127252D864C32BEACA56E /* LanderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BBCF06C2616126B8408B72 /* LanderView.swift */; };
+		0EB16A2B8B18A0A6C5FA20B4 /* ChatServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40142E870BBEF3204DDB40BC /* ChatServiceProtocol.swift */; };
+		0F9E8D7C6B5A4F3E2D1C0B9A /* APITravelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B0C1D2E3F4A5B6C7D8E9F0 /* APITravelService.swift */; };
+		102619D4914A98F0BFCF1BE4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5B03A9641A56B1426C0BD2 /* HomeView.swift */; };
+		19332EF0AC0A7A62DFA3D265 /* MockChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91D58FCC6C54EEF37C4E39 /* MockChatService.swift */; };
+		1A0F9E8D7C6B5A4F3E2D1C0B /* APIPointsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C1D2E3F4A5B6C7D8E9F0A1 /* APIPointsService.swift */; };
+		1C0B9A8F7E6D5C4B3A2F1E0D /* BookingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E1F2A3B4C5D6E7F8A9B0C1 /* BookingHandler.swift */; };
+		2432D57CA9AD4DF680723304 /* MockHotelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E97FBE0EE9813D2484DDAC /* MockHotelService.swift */; };
+		26CF01FD636C0654BFFF7A43 /* MockTravelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2F019231A3996D71BEA31D /* MockTravelService.swift */; };
+		29EE4DE89CC04CDFA25557D6 /* CarRentalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FC424CB227B78C178F735E /* CarRentalCard.swift */; };
+		2A811F30BA04F19C4CEED3C1 /* RichMediaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0640A9964150E91274702E0 /* RichMediaCard.swift */; };
+		2B164B3E84CFAD19CCEB7690 /* PointsBoostBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A98E782B2FCCAD5663883F8 /* PointsBoostBanner.swift */; };
+		2B1A0F9E8D7C6B5A4F3E2D1C /* AgentChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D2E3F4A5B6C7D8E9F0A1B2 /* AgentChatService.swift */; };
+		2C196AAE89A07CA8F4E5248E /* DestinationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB57FA906DF35B8C2F699A85 /* DestinationCard.swift */; };
+		2D1C0B9A8F7E6D5C4B3A2F1E /* PointsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F2A3B4C5D6E7F8A9B0C1D2 /* PointsHandler.swift */; };
+		2E22AA9A636EC93604205CB1 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF47E54A5966F9A2D39396C /* ChatMessage.swift */; };
+		2F02394DCFF65DE7439EEA05 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF3379547F0AEB59F2E955D /* CheckoutView.swift */; };
+		2F1A60B18E6943D92894A225 /* DCEStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C978D3CEB3CFA410B8B46E /* DCEStyles.swift */; };
+		310BE13AADBD28658EA838A3 /* DCEColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FF22874142A7BAC8CC026A /* DCEColors.swift */; };
+		34294262A4821CDFA998782D /* CarRentalServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C833493F8B07D0ED4DA47F38 /* CarRentalServiceProtocol.swift */; };
+		342F4D9C81B6A775F24FEED9 /* TripReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF547D7A71EDA57AF636DB7 /* TripReviewView.swift */; };
+		36C0388C8D393E1C8FB609BA /* TripProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE12E58B834FB4C19FE4B046 /* TripProgressCard.swift */; };
+		37CC54E7F3B0801CA5D87A06 /* MockPointsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F6576E011EBBDAA6055B43 /* MockPointsService.swift */; };
+		3A2F1E0D9C8B7A6F5E4D3C2B /* HTTPTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3D4E5F6A7B8C9D0E1F2A3 /* HTTPTypes.swift */; };
+		3ADAFED531E54E4D0CE32968 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6D33112C52890E9AA6F16 /* Flight.swift */; };
+		3B30F6B6517121E3C780F73B /* HotelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4FF1197540F9CB8F2940C /* HotelCard.swift */; };
+		3C2B1A0F9E8D7C6B5A4F3E2D /* IntentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3F4A5B6C7D8E9F0A1B2C3 /* IntentParser.swift */; };
+		3E2D1C0B9A8F7E6D5C4B3A2F /* TripHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A3B4C5D6E7F8A9B0C1D2E3 /* TripHandler.swift */; };
+		40174C3E910DB2385E950F6B /* TripSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB094981A0CB65865C24A4BD /* TripSuggestionsView.swift */; };
+		44016DD89FF0378FE8CE07A5 /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E4BF51B4F68B4504041BB6 /* ChatInputBar.swift */; };
+		45814F71A74D56137CBBF201 /* TagChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CC443C1E2C00618E71499D /* TagChip.swift */; };
+		48CD40295B06E0C53C2BFCAE /* TravelServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1FF85E39533D97BA17444A /* TravelServiceProtocol.swift */; };
+		4B3A2F1E0D9C8B7A6F5E4D3C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4E5F6A7B8C9D0E1F2A3B4 /* Router.swift */; };
+		4D3C2B1A0F9E8D7C6B5A4F3E /* AgentPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F4A5B6C7D8E9F0A1B2C3D4 /* AgentPlanner.swift */; };
+		4F3E2D1C0B9A8F7E6D5C4B3A /* UserHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4C5D6E7F8A9B0C1D2E3F4 /* UserHandler.swift */; };
+		509054ADA5C867D42AEF6B46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36082DDA3AD9B08838CC18C /* ContentView.swift */; };
+		575E4A1FCD0D27E596583663 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43DDA14DDC72468F83F081F /* ConfirmationView.swift */; };
+		5A4F3E2D1C0B9A8F7E6D5C4B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C5D6E7F8A9B0C1D2E3F4A5 /* APIClient.swift */; };
+		5C4B3A2F1E0D9C8B7A6F5E4D /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E5F6A7B8C9D0E1F2A3B4C5 /* APIRouter.swift */; };
+		5E4D3C2B1A0F9E8D7C6B5A4F /* AgentContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A5B6C7D8E9F0A1B2C3D4E5 /* AgentContext.swift */; };
+		6317CEA69C9932465236F544 /* PointsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0AD9C6645989F5B0DB0B3D /* PointsServiceProtocol.swift */; };
+		66FF344C5D89FEE7C45EA108 /* HotelServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4604C9A7DD550DBDE71428 /* HotelServiceProtocol.swift */; };
+		6B5A4F3E2D1C0B9A8F7E6D5C /* APIFlightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E7F8A9B0C1D2E3F4A5B6 /* APIFlightService.swift */; };
+		6D5C4B3A2F1E0D9C8B7A6F5E /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F6A7B8C9D0E1F2A3B4C5D6 /* DataStore.swift */; };
+		6F5E4D3C2B1A0F9E8D7C6B5A /* AgentTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B6C7D8E9F0A1B2C3D4E5F6 /* AgentTools.swift */; };
+		72B44D05A509F5ED05872A6F /* TripSuggestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07014F3EACEFBE1F92058E6C /* TripSuggestionsViewModel.swift */; };
+		72CB5524656ABD6B5AEA4438 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E7D1CF3E8D64621FEF50AB /* Itinerary.swift */; };
+		739A4CA1B82720A77E0C3134 /* MockCarRentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF094B30A60D1A16486B4114 /* MockCarRentalService.swift */; };
+		79AC473982E1826282A41F22 /* CarRental.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67F484C8941D7494A61ADF1 /* CarRental.swift */; };
+		79CD5F3704DA28FA1822023D /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615951FC5F41596E695290EB /* Booking.swift */; };
+		7A6F5E4D3C2B1A0F9E8D7C6B /* AgentResponseFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C7D8E9F0A1B2C3D4E5F6A7 /* AgentResponseFormatter.swift */; };
+		7BA35E52B95F211F9E768935 /* DCETravelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A07A7EFB0EC40B10FF5D30 /* DCETravelApp.swift */; };
+		7C6B5A4F3E2D1C0B9A8F7E6D /* APIHotelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7F8A9B0C1D2E3F4A5B6C7 /* APIHotelService.swift */; };
+		7E6D5C4B3A2F1E0D9C8B7A6F /* DestinationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A7B8C9D0E1F2A3B4C5D6E7 /* DestinationHandler.swift */; };
+		825B2F8D8B0EBAD1B806FA9C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAFE6B0E68F4E379DECD5F1 /* AppState.swift */; };
+		8D7C6B5A4F3E2D1C0B9A8F7E /* APIRestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F8A9B0C1D2E3F4A5B6C7D8 /* APIRestaurantService.swift */; };
+		8F7E6D5C4B3A2F1E0D9C8B7A /* FlightHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B8C9D0E1F2A3B4C5D6E7F8 /* FlightHandler.swift */; };
+		9154D14A3D2F1A6F911BC385 /* PostTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C41D786523B290D7DDF9D76 /* PostTripView.swift */; };
+		944EA8362F851105FB067726 /* DCEFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F28215DC8DBFACEEFB6F81F /* DCEFonts.swift */; };
+		9A8F7E6D5C4B3A2F1E0D9C8B /* HotelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C9D0E1F2A3B4C5D6E7F8A9 /* HotelHandler.swift */; };
+		9B0A88506938CDD9DF897978 /* QuickActionChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BE695037E4A6502486AC7A /* QuickActionChip.swift */; };
+		9E487E55BC4A6003B6793217 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7370F952B204A40D71F2261 /* AppRouter.swift */; };
+		9E8D7C6B5A4F3E2D1C0B9A8F /* APIBookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A9B0C1D2E3F4A5B6C7D8E9 /* APIBookingService.swift */; };
+		9EFE8C4E2B2C314FEA9D8C9E /* UpdateAlertCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDB79C95BE7AC40029F22F3 /* UpdateAlertCard.swift */; };
+		A02E97BE8CD59D7984CD5D96 /* OnTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD01EE6C879BE1AB92ABDEF /* OnTripView.swift */; };
+		A2246D18905CE957E7708E7B /* ItineraryThemeCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF04A280D2693D128E721A /* ItineraryThemeCards.swift */; };
+		A636658DC914CAB7340F7A96 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A0E4B7BCE7BA919889D51 /* ChatBubble.swift */; };
+		AC278F3C0B6AB147854396D1 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A4B8053987AE5D7EFBD37B /* MockData.swift */; };
+		B4A635963833B5F64F71A878 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F158B63965D26DECBB57FD /* ChatView.swift */; };
+		B6E2614760671952AE59A3BA /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64581AD4DC35E710B80CFFF8 /* ChatViewModel.swift */; };
+		B8BAFFC0C60C7A39017522BF /* MockBookingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3F6584C7150D768079B76 /* MockBookingService.swift */; };
+		CBB0E6031FD2B83E2F64D4A0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79B6AE80143450C50FCFBB9 /* User.swift */; };
+		CCD64588A7810E0021EBE0CE /* APICarRentalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871A43249FDAF288B3FAF879 /* APICarRentalService.swift */; };
+		D393C2A238A6844246FD9F53 /* MockFlightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD25E8F135ABE9403A61C582 /* MockFlightService.swift */; };
+		D7D341B99E9B08309A906001 /* CarRentalHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8B43ECB552E30A89CE0501 /* CarRentalHandler.swift */; };
+		DEE5D96023A4C85298972BA0 /* FlightServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EADB3905EE1EE853FAA5E37 /* FlightServiceProtocol.swift */; };
+		E0AA0658F1512C7E14DC0626 /* RestaurantServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC2C67B8394D6392F707C79 /* RestaurantServiceProtocol.swift */; };
+		E35AFB6BBD93707F6B3E579E /* MockRestaurantService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D02BAE956BB17B96D806112 /* MockRestaurantService.swift */; };
+		E5E9D66821F52D204BFD542C /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28F33FF462C18D1F2AF14FA /* Destination.swift */; };
+		E7B6976A726E3020E81AACF0 /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EEB88F54B2D23621FC8063 /* ShimmerView.swift */; };
+		E8D1B5DD57209239BC5D92E1 /* ActionsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4ABE095E457D843AA45ED6 /* ActionsGridView.swift */; };
+		EDFF5E027FECBF78AA5EA3EA /* BookingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4003145CA485112063CF3334 /* BookingServiceProtocol.swift */; };
+		F2E1D0C9B8A7F6E5D4C3B2A1 /* LocalServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6A7B8C9D0E1F2 /* LocalServer.swift */; };
+		F7064D0476C4CB02FC928F4C /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F572EDAB537A32BA9BCE1939 /* Hotel.swift */; };
+		FCC90669E9A134FA2288C7FD /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09432C5396A3DE7E68496468 /* Restaurant.swift */; };
+		96FE1D845A9F2DB236D4BA7D /* ClaudeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1DB0293DBA266E7039CA92 /* ClaudeAPIClient.swift */; };
+		98A8D7736521D6EAE9C493C1 /* ClaudeToolSchemas.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FBB651BF8E84145302A473 /* ClaudeToolSchemas.swift */; };
+		FB7CE3B907762DB4BE977AFB /* LLMChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159EAB2959F1BF6944D75C6 /* LLMChatService.swift */; };
+		AA1BB2CC3DD4EE55FF660011 /* NavigationBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2EE3FF4AA5BB66CC770022 /* NavigationBridge.swift */; };
+		B78DB5B149194B548B4DB653 /* UnifiedCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F926080D978349D883B28372 /* UnifiedCheckoutView.swift */; };
+		F8C5EBF8474B4A73A2794BD9 /* BookingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CF77B4975843CDBDE0CC2E /* BookingListView.swift */; };
+		01714D8534F447C88CFE9CCB /* SearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D56A463F0B4E65837688BA /* SearchResultsView.swift */; };
+		AA11223344556677FEED0001 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22334455667788FEED0001 /* FeedItem.swift */; };
+		AA11223344556677FEED0002 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22334455667788FEED0002 /* FeedViewModel.swift */; };
+		AA11223344556677FEED0003 /* FeedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22334455667788FEED0003 /* FeedCard.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		07014F3EACEFBE1F92058E6C /* TripSuggestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TripSuggestionsViewModel.swift; path = DCETravel/ViewModels/TripSuggestionsViewModel.swift; sourceTree = SOURCE_ROOT; };
+		09432C5396A3DE7E68496468 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		0D02BAE956BB17B96D806112 /* MockRestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRestaurantService.swift; sourceTree = "<group>"; };
+		0D8B43ECB552E30A89CE0501 /* CarRentalHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarRentalHandler.swift; path = DCETravel/Services/Server/Handlers/CarRentalHandler.swift; sourceTree = SOURCE_ROOT; };
+		0F28215DC8DBFACEEFB6F81F /* DCEFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCEFonts.swift; sourceTree = "<group>"; };
+		14BBCF06C2616126B8408B72 /* LanderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanderView.swift; sourceTree = "<group>"; };
+		18FF22874142A7BAC8CC026A /* DCEColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCEColors.swift; sourceTree = "<group>"; };
+		1C41D786523B290D7DDF9D76 /* PostTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTripView.swift; sourceTree = "<group>"; };
+		1EADB3905EE1EE853FAA5E37 /* FlightServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightServiceProtocol.swift; sourceTree = "<group>"; };
+		1F0AD9C6645989F5B0DB0B3D /* PointsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsServiceProtocol.swift; sourceTree = "<group>"; };
+		36F3F6584C7150D768079B76 /* MockBookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBookingService.swift; sourceTree = "<group>"; };
+		3CC2C67B8394D6392F707C79 /* RestaurantServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantServiceProtocol.swift; sourceTree = "<group>"; };
+		4003145CA485112063CF3334 /* BookingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingServiceProtocol.swift; sourceTree = "<group>"; };
+		40142E870BBEF3204DDB40BC /* ChatServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServiceProtocol.swift; sourceTree = "<group>"; };
+		45A07A7EFB0EC40B10FF5D30 /* DCETravelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCETravelApp.swift; sourceTree = "<group>"; };
+		4B2F019231A3996D71BEA31D /* MockTravelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTravelService.swift; sourceTree = "<group>"; };
+		55CC443C1E2C00618E71499D /* TagChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagChip.swift; sourceTree = "<group>"; };
+		5ABF04A280D2693D128E721A /* ItineraryThemeCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryThemeCards.swift; sourceTree = "<group>"; };
+		615951FC5F41596E695290EB /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		64581AD4DC35E710B80CFFF8 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		67BE695037E4A6502486AC7A /* QuickActionChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionChip.swift; sourceTree = "<group>"; };
+		744B8DFBCD9C0B16CC9AC958 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		79E4BF51B4F68B4504041BB6 /* ChatInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
+		7D4604C9A7DD550DBDE71428 /* HotelServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelServiceProtocol.swift; sourceTree = "<group>"; };
+		7FDB79C95BE7AC40029F22F3 /* UpdateAlertCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAlertCard.swift; sourceTree = "<group>"; };
+		871A43249FDAF288B3FAF879 /* APICarRentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APICarRentalService.swift; path = DCETravel/Services/API/APICarRentalService.swift; sourceTree = SOURCE_ROOT; };
+		8FA4FF1197540F9CB8F2940C /* HotelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelCard.swift; sourceTree = "<group>"; };
+		8FF3379547F0AEB59F2E955D /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		93F158B63965D26DECBB57FD /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		961AD8890CD3B25A82C3910E /* DCETravel.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DCETravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A98E782B2FCCAD5663883F8 /* PointsBoostBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsBoostBanner.swift; sourceTree = "<group>"; };
+		9BAFE6B0E68F4E379DECD5F1 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F6A7B8C9D0E1F2 /* LocalServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalServer.swift; sourceTree = "<group>"; };
+		A3B4C5D6E7F8A9B0C1D2E3F4 /* UserHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHandler.swift; sourceTree = "<group>"; };
+		A5B6C7D8E9F0A1B2C3D4E5F6 /* AgentTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentTools.swift; sourceTree = "<group>"; };
+		A67F484C8941D7494A61ADF1 /* CarRental.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarRental.swift; path = DCETravel/Models/CarRental.swift; sourceTree = SOURCE_ROOT; };
+		A7B8C9D0E1F2A3B4C5D6E7F8 /* FlightHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightHandler.swift; sourceTree = "<group>"; };
+		A9B0C1D2E3F4A5B6C7D8E9F0 /* APITravelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITravelService.swift; sourceTree = "<group>"; };
+		ABF47E54A5966F9A2D39396C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		ACD01EE6C879BE1AB92ABDEF /* OnTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnTripView.swift; sourceTree = "<group>"; };
+		B0C1D2E3F4A5B6C7D8E9F0A1 /* APIPointsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPointsService.swift; sourceTree = "<group>"; };
+		B2C3D4E5F6A7B8C9D0E1F2A3 /* HTTPTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTypes.swift; sourceTree = "<group>"; };
+		B36082DDA3AD9B08838CC18C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B43DDA14DDC72468F83F081F /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		B4C5D6E7F8A9B0C1D2E3F4A5 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		B6C7D8E9F0A1B2C3D4E5F6A7 /* AgentResponseFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentResponseFormatter.swift; sourceTree = "<group>"; };
+		B8C9D0E1F2A3B4C5D6E7F8A9 /* HotelHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelHandler.swift; sourceTree = "<group>"; };
+		BA1FF85E39533D97BA17444A /* TravelServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelServiceProtocol.swift; sourceTree = "<group>"; };
+		BE12E58B834FB4C19FE4B046 /* TripProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripProgressCard.swift; sourceTree = "<group>"; };
+		C1D2E3F4A5B6C7D8E9F0A1B2 /* AgentChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentChatService.swift; sourceTree = "<group>"; };
+		C3D4E5F6A7B8C9D0E1F2A3B4 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C3E97FBE0EE9813D2484DDAC /* MockHotelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHotelService.swift; sourceTree = "<group>"; };
+		C4A4B8053987AE5D7EFBD37B /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		C4C978D3CEB3CFA410B8B46E /* DCEStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCEStyles.swift; sourceTree = "<group>"; };
+		C5D6E7F8A9B0C1D2E3F4A5B6 /* APIFlightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFlightService.swift; sourceTree = "<group>"; };
+		C833493F8B07D0ED4DA47F38 /* CarRentalServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarRentalServiceProtocol.swift; path = DCETravel/Services/Protocols/CarRentalServiceProtocol.swift; sourceTree = SOURCE_ROOT; };
+		C8FC424CB227B78C178F735E /* CarRentalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CarRentalCard.swift; path = DCETravel/Views/Components/CarRentalCard.swift; sourceTree = SOURCE_ROOT; };
+		C9D0E1F2A3B4C5D6E7F8A9B0 /* RestaurantHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantHandler.swift; sourceTree = "<group>"; };
+		D0E1F2A3B4C5D6E7F8A9B0C1 /* BookingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingHandler.swift; sourceTree = "<group>"; };
+		D2E3F4A5B6C7D8E9F0A1B2C3 /* IntentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentParser.swift; sourceTree = "<group>"; };
+		D4E5F6A7B8C9D0E1F2A3B4C5 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		D52056EE9BB54B16069B8EC2 /* ServiceContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceContainer.swift; sourceTree = "<group>"; };
+		D5D6D33112C52890E9AA6F16 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		D6E7F8A9B0C1D2E3F4A5B6C7 /* APIHotelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHotelService.swift; sourceTree = "<group>"; };
+		D7370F952B204A40D71F2261 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		DA5B03A9641A56B1426C0BD2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DB4ABE095E457D843AA45ED6 /* ActionsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsGridView.swift; sourceTree = "<group>"; };
+		E1E7D1CF3E8D64621FEF50AB /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
+		E1F2A3B4C5D6E7F8A9B0C1D2 /* PointsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsHandler.swift; sourceTree = "<group>"; };
+		E1F6576E011EBBDAA6055B43 /* MockPointsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPointsService.swift; sourceTree = "<group>"; };
+		E28F33FF462C18D1F2AF14FA /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		E3F4A5B6C7D8E9F0A1B2C3D4 /* AgentPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentPlanner.swift; sourceTree = "<group>"; };
+		E5F6A7B8C9D0E1F2A3B4C5D6 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		E79B6AE80143450C50FCFBB9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E7F8A9B0C1D2E3F4A5B6C7D8 /* APIRestaurantService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRestaurantService.swift; sourceTree = "<group>"; };
+		E87A0E4B7BCE7BA919889D51 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		EB57FA906DF35B8C2F699A85 /* DestinationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCard.swift; sourceTree = "<group>"; };
+		EF094B30A60D1A16486B4114 /* MockCarRentalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockCarRentalService.swift; path = DCETravel/Services/Mock/MockCarRentalService.swift; sourceTree = SOURCE_ROOT; };
+		F0640A9964150E91274702E0 /* RichMediaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RichMediaCard.swift; sourceTree = "<group>"; };
+		F2A3B4C5D6E7F8A9B0C1D2E3 /* TripHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripHandler.swift; sourceTree = "<group>"; };
+		F4A5B6C7D8E9F0A1B2C3D4E5 /* AgentContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentContext.swift; sourceTree = "<group>"; };
+		F572EDAB537A32BA9BCE1939 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
+		F5EEB88F54B2D23621FC8063 /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		F6A7B8C9D0E1F2A3B4C5D6E7 /* DestinationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationHandler.swift; sourceTree = "<group>"; };
+		F8A9B0C1D2E3F4A5B6C7D8E9 /* APIBookingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBookingService.swift; sourceTree = "<group>"; };
+		FB094981A0CB65865C24A4BD /* TripSuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TripSuggestionsView.swift; path = DCETravel/Views/TripSuggestions/TripSuggestionsView.swift; sourceTree = SOURCE_ROOT; };
+		FC91D58FCC6C54EEF37C4E39 /* MockChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChatService.swift; sourceTree = "<group>"; };
+		FD25E8F135ABE9403A61C582 /* MockFlightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFlightService.swift; sourceTree = "<group>"; };
+		FEF547D7A71EDA57AF636DB7 /* TripReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TripReviewView.swift; path = DCETravel/Views/TripSuggestions/TripReviewView.swift; sourceTree = SOURCE_ROOT; };
+		8C1DB0293DBA266E7039CA92 /* ClaudeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeAPIClient.swift; sourceTree = "<group>"; };
+		E3FBB651BF8E84145302A473 /* ClaudeToolSchemas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeToolSchemas.swift; sourceTree = "<group>"; };
+		B159EAB2959F1BF6944D75C6 /* LLMChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMChatService.swift; sourceTree = "<group>"; };
+		DD2EE3FF4AA5BB66CC770022 /* NavigationBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBridge.swift; sourceTree = "<group>"; };
+		F926080D978349D883B28372 /* UnifiedCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedCheckoutView.swift; sourceTree = "<group>"; };
+		A1CF77B4975843CDBDE0CC2E /* BookingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingListView.swift; sourceTree = "<group>"; };
+		68D56A463F0B4E65837688BA /* SearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsView.swift; sourceTree = "<group>"; };
+		BB22334455667788FEED0001 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		BB22334455667788FEED0002 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		BB22334455667788FEED0003 /* FeedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCard.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0136859A8C6E9C92D452A6D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				961AD8890CD3B25A82C3910E /* DCETravel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		024E2B177C24B7EF2B720AF4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E87A0E4B7BCE7BA919889D51 /* ChatBubble.swift */,
+				79E4BF51B4F68B4504041BB6 /* ChatInputBar.swift */,
+				EB57FA906DF35B8C2F699A85 /* DestinationCard.swift */,
+				BB22334455667788FEED0003 /* FeedCard.swift */,
+				8FA4FF1197540F9CB8F2940C /* HotelCard.swift */,
+				5ABF04A280D2693D128E721A /* ItineraryThemeCards.swift */,
+				9A98E782B2FCCAD5663883F8 /* PointsBoostBanner.swift */,
+				67BE695037E4A6502486AC7A /* QuickActionChip.swift */,
+				F0640A9964150E91274702E0 /* RichMediaCard.swift */,
+				F5EEB88F54B2D23621FC8063 /* ShimmerView.swift */,
+				55CC443C1E2C00618E71499D /* TagChip.swift */,
+				BE12E58B834FB4C19FE4B046 /* TripProgressCard.swift */,
+				7FDB79C95BE7AC40029F22F3 /* UpdateAlertCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		10B6978324A4D4185E281A3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5ABB154CE0369722622A960 /* Actions */,
+				9A6D3BB7F973ABE640132A14 /* Chat */,
+				7A9ECC1C4A0F1831F1DB1A04 /* Checkout */,
+				024E2B177C24B7EF2B720AF4 /* Components */,
+				D463AB9380B4FB79A770895F /* Confirmation */,
+				8ADD3C29C1D956CAEE4B9FD3 /* Home */,
+				47F0F97CD3A497FA50D754A0 /* Lander */,
+				1D987103635A215B0676496A /* OnTrip */,
+				DE8A0A43A9DAAC2BA4C5A628 /* PostTrip */,
+							DA65FAF0E52E43BEB5C77AF0 /* Booking */,
+				834F1BC34DB64EFDB2224087 /* Search */,
+);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1D987103635A215B0676496A /* OnTrip */ = {
+			isa = PBXGroup;
+			children = (
+				ACD01EE6C879BE1AB92ABDEF /* OnTripView.swift */,
+			);
+			path = OnTrip;
+			sourceTree = "<group>";
+		};
+		1E601A8B2180EED73DEF8008 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				18FF22874142A7BAC8CC026A /* DCEColors.swift */,
+				0F28215DC8DBFACEEFB6F81F /* DCEFonts.swift */,
+				C4C978D3CEB3CFA410B8B46E /* DCEStyles.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		2231B89C288FFE5B5EE27002 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		27602812C47C79BE9E332FEE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				615951FC5F41596E695290EB /* Booking.swift */,
+				ABF47E54A5966F9A2D39396C /* ChatMessage.swift */,
+				E28F33FF462C18D1F2AF14FA /* Destination.swift */,
+				BB22334455667788FEED0001 /* FeedItem.swift */,
+				D5D6D33112C52890E9AA6F16 /* Flight.swift */,
+				F572EDAB537A32BA9BCE1939 /* Hotel.swift */,
+				E1E7D1CF3E8D64621FEF50AB /* Itinerary.swift */,
+				09432C5396A3DE7E68496468 /* Restaurant.swift */,
+				744B8DFBCD9C0B16CC9AC958 /* Trip.swift */,
+				E79B6AE80143450C50FCFBB9 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3806D4506376C02B24A78EF6 = {
+			isa = PBXGroup;
+			children = (
+				90ADCB638C120BB28764E7C1 /* DCETravel */,
+				0136859A8C6E9C92D452A6D7 /* Products */,
+				A67F484C8941D7494A61ADF1 /* CarRental.swift */,
+				C833493F8B07D0ED4DA47F38 /* CarRentalServiceProtocol.swift */,
+				0D8B43ECB552E30A89CE0501 /* CarRentalHandler.swift */,
+				871A43249FDAF288B3FAF879 /* APICarRentalService.swift */,
+				EF094B30A60D1A16486B4114 /* MockCarRentalService.swift */,
+				07014F3EACEFBE1F92058E6C /* TripSuggestionsViewModel.swift */,
+				C8FC424CB227B78C178F735E /* CarRentalCard.swift */,
+				FB094981A0CB65865C24A4BD /* TripSuggestionsView.swift */,
+				FEF547D7A71EDA57AF636DB7 /* TripReviewView.swift */,
+			);
+			sourceTree = "<group>";
+		};
+		47F0F97CD3A497FA50D754A0 /* Lander */ = {
+			isa = PBXGroup;
+			children = (
+				14BBCF06C2616126B8408B72 /* LanderView.swift */,
+			);
+			path = Lander;
+			sourceTree = "<group>";
+		};
+		508D3F9F394EA07AD950FA1A /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				D7370F952B204A40D71F2261 /* AppRouter.swift */,
+				9BAFE6B0E68F4E379DECD5F1 /* AppState.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		7A9ECC1C4A0F1831F1DB1A04 /* Checkout */ = {
+			isa = PBXGroup;
+			children = (
+				8FF3379547F0AEB59F2E955D /* CheckoutView.swift */,
+							F926080D978349D883B28372 /* UnifiedCheckoutView.swift */,
+);
+			path = Checkout;
+			sourceTree = "<group>";
+		};
+		84BE56BEBEA14BCF39391CE2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8798161467BD06332E360661 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				36F3F6584C7150D768079B76 /* MockBookingService.swift */,
+				FC91D58FCC6C54EEF37C4E39 /* MockChatService.swift */,
+				C4A4B8053987AE5D7EFBD37B /* MockData.swift */,
+				FD25E8F135ABE9403A61C582 /* MockFlightService.swift */,
+				C3E97FBE0EE9813D2484DDAC /* MockHotelService.swift */,
+				E1F6576E011EBBDAA6055B43 /* MockPointsService.swift */,
+				0D02BAE956BB17B96D806112 /* MockRestaurantService.swift */,
+				4B2F019231A3996D71BEA31D /* MockTravelService.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		8ADD3C29C1D956CAEE4B9FD3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DA5B03A9641A56B1426C0BD2 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		90ADCB638C120BB28764E7C1 /* DCETravel */ = {
+			isa = PBXGroup;
+			children = (
+				B36082DDA3AD9B08838CC18C /* ContentView.swift */,
+				45A07A7EFB0EC40B10FF5D30 /* DCETravelApp.swift */,
+				84BE56BEBEA14BCF39391CE2 /* Extensions */,
+				27602812C47C79BE9E332FEE /* Models */,
+				508D3F9F394EA07AD950FA1A /* Navigation */,
+				2231B89C288FFE5B5EE27002 /* Resources */,
+				D73804AAC902ED1E84143ACD /* Services */,
+				1E601A8B2180EED73DEF8008 /* Theme */,
+				AB1365CC803F91E132CC77DD /* ViewModels */,
+				10B6978324A4D4185E281A3E /* Views */,
+			);
+			path = DCETravel;
+			sourceTree = "<group>";
+		};
+		9A6D3BB7F973ABE640132A14 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				93F158B63965D26DECBB57FD /* ChatView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		A2C9E1034C526610985557FA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				4003145CA485112063CF3334 /* BookingServiceProtocol.swift */,
+				40142E870BBEF3204DDB40BC /* ChatServiceProtocol.swift */,
+				1EADB3905EE1EE853FAA5E37 /* FlightServiceProtocol.swift */,
+				7D4604C9A7DD550DBDE71428 /* HotelServiceProtocol.swift */,
+				1F0AD9C6645989F5B0DB0B3D /* PointsServiceProtocol.swift */,
+				3CC2C67B8394D6392F707C79 /* RestaurantServiceProtocol.swift */,
+				BA1FF85E39533D97BA17444A /* TravelServiceProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		AA11BB22CC33DD44EE55FF66 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				D4E5F6A7B8C9D0E1F2A3B4C5 /* APIRouter.swift */,
+				E5F6A7B8C9D0E1F2A3B4C5D6 /* DataStore.swift */,
+				BB22CC33DD44EE55FF66AA77 /* Handlers */,
+				B2C3D4E5F6A7B8C9D0E1F2A3 /* HTTPTypes.swift */,
+				A1B2C3D4E5F6A7B8C9D0E1F2 /* LocalServer.swift */,
+				C3D4E5F6A7B8C9D0E1F2A3B4 /* Router.swift */,
+			);
+			path = Server;
+			sourceTree = "<group>";
+		};
+		AB1365CC803F91E132CC77DD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				64581AD4DC35E710B80CFFF8 /* ChatViewModel.swift */,
+				BB22334455667788FEED0002 /* FeedViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		BB22CC33DD44EE55FF66AA77 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				D0E1F2A3B4C5D6E7F8A9B0C1 /* BookingHandler.swift */,
+				F6A7B8C9D0E1F2A3B4C5D6E7 /* DestinationHandler.swift */,
+				A7B8C9D0E1F2A3B4C5D6E7F8 /* FlightHandler.swift */,
+				B8C9D0E1F2A3B4C5D6E7F8A9 /* HotelHandler.swift */,
+				E1F2A3B4C5D6E7F8A9B0C1D2 /* PointsHandler.swift */,
+				C9D0E1F2A3B4C5D6E7F8A9B0 /* RestaurantHandler.swift */,
+				F2A3B4C5D6E7F8A9B0C1D2E3 /* TripHandler.swift */,
+				A3B4C5D6E7F8A9B0C1D2E3F4 /* UserHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		CC33DD44EE55FF66AA77BB88 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F8A9B0C1D2E3F4A5B6C7D8E9 /* APIBookingService.swift */,
+				B4C5D6E7F8A9B0C1D2E3F4A5 /* APIClient.swift */,
+				C5D6E7F8A9B0C1D2E3F4A5B6 /* APIFlightService.swift */,
+				D6E7F8A9B0C1D2E3F4A5B6C7 /* APIHotelService.swift */,
+				B0C1D2E3F4A5B6C7D8E9F0A1 /* APIPointsService.swift */,
+				E7F8A9B0C1D2E3F4A5B6C7D8 /* APIRestaurantService.swift */,
+				A9B0C1D2E3F4A5B6C7D8E9F0 /* APITravelService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D463AB9380B4FB79A770895F /* Confirmation */ = {
+			isa = PBXGroup;
+			children = (
+				B43DDA14DDC72468F83F081F /* ConfirmationView.swift */,
+			);
+			path = Confirmation;
+			sourceTree = "<group>";
+		};
+		D73804AAC902ED1E84143ACD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D52056EE9BB54B16069B8EC2 /* ServiceContainer.swift */,
+				DD44EE55FF66AA77BB88CC99 /* Agent */,
+				CC33DD44EE55FF66AA77BB88 /* API */,
+				8798161467BD06332E360661 /* Mock */,
+				A2C9E1034C526610985557FA /* Protocols */,
+				AA11BB22CC33DD44EE55FF66 /* Server */,
+			
+				34DF4DE01E37DA62D9737D4E /* LLM */,);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DD44EE55FF66AA77BB88CC99 /* Agent */ = {
+			isa = PBXGroup;
+			children = (
+				C1D2E3F4A5B6C7D8E9F0A1B2 /* AgentChatService.swift */,
+				F4A5B6C7D8E9F0A1B2C3D4E5 /* AgentContext.swift */,
+				E3F4A5B6C7D8E9F0A1B2C3D4 /* AgentPlanner.swift */,
+				B6C7D8E9F0A1B2C3D4E5F6A7 /* AgentResponseFormatter.swift */,
+				A5B6C7D8E9F0A1B2C3D4E5F6 /* AgentTools.swift */,
+				D2E3F4A5B6C7D8E9F0A1B2C3 /* IntentParser.swift */,
+			);
+			path = Agent;
+			sourceTree = "<group>";
+		};
+		DE8A0A43A9DAAC2BA4C5A628 /* PostTrip */ = {
+			isa = PBXGroup;
+			children = (
+				1C41D786523B290D7DDF9D76 /* PostTripView.swift */,
+			);
+			path = PostTrip;
+			sourceTree = "<group>";
+		};
+		F5ABB154CE0369722622A960 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				DB4ABE095E457D843AA45ED6 /* ActionsGridView.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		34DF4DE01E37DA62D9737D4E /* LLM */ = {
+			isa = PBXGroup;
+			children = (
+				8C1DB0293DBA266E7039CA92 /* ClaudeAPIClient.swift */,
+				E3FBB651BF8E84145302A473 /* ClaudeToolSchemas.swift */,
+				B159EAB2959F1BF6944D75C6 /* LLMChatService.swift */,
+				DD2EE3FF4AA5BB66CC770022 /* NavigationBridge.swift */,
+			);
+			path = LLM;
+			sourceTree = "<group>";
+		};
+		DA65FAF0E52E43BEB5C77AF0 /* Booking */ = {
+			isa = PBXGroup;
+			children = (
+				A1CF77B4975843CDBDE0CC2E /* BookingListView.swift */,
+			);
+			path = Booking;
+			sourceTree = "<group>";
+		};
+		834F1BC34DB64EFDB2224087 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				68D56A463F0B4E65837688BA /* SearchResultsView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		859365FDF4830FB4D324DD50 /* DCETravel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5BBC6CA00D6AF82CDC74DB06 /* Build configuration list for PBXNativeTarget "DCETravel" */;
+			buildPhases = (
+				9675CBA5BF1C40DBFC2131C3 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DCETravel;
+			packageProductDependencies = (
+			);
+			productName = DCETravel;
+			productReference = 961AD8890CD3B25A82C3910E /* DCETravel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B9AAE712DC9CA216163B1B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					859365FDF4830FB4D324DD50 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 74D551A8E8FF4872DE21F5A7 /* Build configuration list for PBXProject "DCETravel" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3806D4506376C02B24A78EF6;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				859365FDF4830FB4D324DD50 /* DCETravel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9675CBA5BF1C40DBFC2131C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8D1B5DD57209239BC5D92E1 /* ActionsGridView.swift in Sources */,
+				2B1A0F9E8D7C6B5A4F3E2D1C /* AgentChatService.swift in Sources */,
+				5E4D3C2B1A0F9E8D7C6B5A4F /* AgentContext.swift in Sources */,
+				4D3C2B1A0F9E8D7C6B5A4F3E /* AgentPlanner.swift in Sources */,
+				7A6F5E4D3C2B1A0F9E8D7C6B /* AgentResponseFormatter.swift in Sources */,
+				6F5E4D3C2B1A0F9E8D7C6B5A /* AgentTools.swift in Sources */,
+				5A4F3E2D1C0B9A8F7E6D5C4B /* APIClient.swift in Sources */,
+				9E8D7C6B5A4F3E2D1C0B9A8F /* APIBookingService.swift in Sources */,
+				6B5A4F3E2D1C0B9A8F7E6D5C /* APIFlightService.swift in Sources */,
+				7C6B5A4F3E2D1C0B9A8F7E6D /* APIHotelService.swift in Sources */,
+				1A0F9E8D7C6B5A4F3E2D1C0B /* APIPointsService.swift in Sources */,
+				8D7C6B5A4F3E2D1C0B9A8F7E /* APIRestaurantService.swift in Sources */,
+				5C4B3A2F1E0D9C8B7A6F5E4D /* APIRouter.swift in Sources */,
+				0F9E8D7C6B5A4F3E2D1C0B9A /* APITravelService.swift in Sources */,
+				9E487E55BC4A6003B6793217 /* AppRouter.swift in Sources */,
+				825B2F8D8B0EBAD1B806FA9C /* AppState.swift in Sources */,
+				79CD5F3704DA28FA1822023D /* Booking.swift in Sources */,
+				1C0B9A8F7E6D5C4B3A2F1E0D /* BookingHandler.swift in Sources */,
+				EDFF5E027FECBF78AA5EA3EA /* BookingServiceProtocol.swift in Sources */,
+				A636658DC914CAB7340F7A96 /* ChatBubble.swift in Sources */,
+				44016DD89FF0378FE8CE07A5 /* ChatInputBar.swift in Sources */,
+				2E22AA9A636EC93604205CB1 /* ChatMessage.swift in Sources */,
+				0EB16A2B8B18A0A6C5FA20B4 /* ChatServiceProtocol.swift in Sources */,
+				B4A635963833B5F64F71A878 /* ChatView.swift in Sources */,
+				B6E2614760671952AE59A3BA /* ChatViewModel.swift in Sources */,
+				2F02394DCFF65DE7439EEA05 /* CheckoutView.swift in Sources */,
+				575E4A1FCD0D27E596583663 /* ConfirmationView.swift in Sources */,
+				509054ADA5C867D42AEF6B46 /* ContentView.swift in Sources */,
+				6D5C4B3A2F1E0D9C8B7A6F5E /* DataStore.swift in Sources */,
+				310BE13AADBD28658EA838A3 /* DCEColors.swift in Sources */,
+				944EA8362F851105FB067726 /* DCEFonts.swift in Sources */,
+				2F1A60B18E6943D92894A225 /* DCEStyles.swift in Sources */,
+				7BA35E52B95F211F9E768935 /* DCETravelApp.swift in Sources */,
+				E5E9D66821F52D204BFD542C /* Destination.swift in Sources */,
+				2C196AAE89A07CA8F4E5248E /* DestinationCard.swift in Sources */,
+				7E6D5C4B3A2F1E0D9C8B7A6F /* DestinationHandler.swift in Sources */,
+				3ADAFED531E54E4D0CE32968 /* Flight.swift in Sources */,
+				8F7E6D5C4B3A2F1E0D9C8B7A /* FlightHandler.swift in Sources */,
+				DEE5D96023A4C85298972BA0 /* FlightServiceProtocol.swift in Sources */,
+				102619D4914A98F0BFCF1BE4 /* HomeView.swift in Sources */,
+				F7064D0476C4CB02FC928F4C /* Hotel.swift in Sources */,
+				3B30F6B6517121E3C780F73B /* HotelCard.swift in Sources */,
+				9A8F7E6D5C4B3A2F1E0D9C8B /* HotelHandler.swift in Sources */,
+				66FF344C5D89FEE7C45EA108 /* HotelServiceProtocol.swift in Sources */,
+				3A2F1E0D9C8B7A6F5E4D3C2B /* HTTPTypes.swift in Sources */,
+				3C2B1A0F9E8D7C6B5A4F3E2D /* IntentParser.swift in Sources */,
+				72CB5524656ABD6B5AEA4438 /* Itinerary.swift in Sources */,
+				A2246D18905CE957E7708E7B /* ItineraryThemeCards.swift in Sources */,
+				0BE127252D864C32BEACA56E /* LanderView.swift in Sources */,
+				F2E1D0C9B8A7F6E5D4C3B2A1 /* LocalServer.swift in Sources */,
+				B8BAFFC0C60C7A39017522BF /* MockBookingService.swift in Sources */,
+				19332EF0AC0A7A62DFA3D265 /* MockChatService.swift in Sources */,
+				AC278F3C0B6AB147854396D1 /* MockData.swift in Sources */,
+				D393C2A238A6844246FD9F53 /* MockFlightService.swift in Sources */,
+				2432D57CA9AD4DF680723304 /* MockHotelService.swift in Sources */,
+				37CC54E7F3B0801CA5D87A06 /* MockPointsService.swift in Sources */,
+				E35AFB6BBD93707F6B3E579E /* MockRestaurantService.swift in Sources */,
+				26CF01FD636C0654BFFF7A43 /* MockTravelService.swift in Sources */,
+				A02E97BE8CD59D7984CD5D96 /* OnTripView.swift in Sources */,
+				2B164B3E84CFAD19CCEB7690 /* PointsBoostBanner.swift in Sources */,
+				2D1C0B9A8F7E6D5C4B3A2F1E /* PointsHandler.swift in Sources */,
+				6317CEA69C9932465236F544 /* PointsServiceProtocol.swift in Sources */,
+				9154D14A3D2F1A6F911BC385 /* PostTripView.swift in Sources */,
+				9B0A88506938CDD9DF897978 /* QuickActionChip.swift in Sources */,
+				FCC90669E9A134FA2288C7FD /* Restaurant.swift in Sources */,
+				0B9A8F7E6D5C4B3A2F1E0D9C /* RestaurantHandler.swift in Sources */,
+				E0AA0658F1512C7E14DC0626 /* RestaurantServiceProtocol.swift in Sources */,
+				2A811F30BA04F19C4CEED3C1 /* RichMediaCard.swift in Sources */,
+				4B3A2F1E0D9C8B7A6F5E4D3C /* Router.swift in Sources */,
+				0056A3F9FC65488C335291EB /* ServiceContainer.swift in Sources */,
+				E7B6976A726E3020E81AACF0 /* ShimmerView.swift in Sources */,
+				45814F71A74D56137CBBF201 /* TagChip.swift in Sources */,
+				48CD40295B06E0C53C2BFCAE /* TravelServiceProtocol.swift in Sources */,
+				02BC1C1596DADC44A2D33967 /* Trip.swift in Sources */,
+				3E2D1C0B9A8F7E6D5C4B3A2F /* TripHandler.swift in Sources */,
+				36C0388C8D393E1C8FB609BA /* TripProgressCard.swift in Sources */,
+				9EFE8C4E2B2C314FEA9D8C9E /* UpdateAlertCard.swift in Sources */,
+				CBB0E6031FD2B83E2F64D4A0 /* User.swift in Sources */,
+				4F3E2D1C0B9A8F7E6D5C4B3A /* UserHandler.swift in Sources */,
+				79AC473982E1826282A41F22 /* CarRental.swift in Sources */,
+				34294262A4821CDFA998782D /* CarRentalServiceProtocol.swift in Sources */,
+				D7D341B99E9B08309A906001 /* CarRentalHandler.swift in Sources */,
+				CCD64588A7810E0021EBE0CE /* APICarRentalService.swift in Sources */,
+				739A4CA1B82720A77E0C3134 /* MockCarRentalService.swift in Sources */,
+				72B44D05A509F5ED05872A6F /* TripSuggestionsViewModel.swift in Sources */,
+				29EE4DE89CC04CDFA25557D6 /* CarRentalCard.swift in Sources */,
+				40174C3E910DB2385E950F6B /* TripSuggestionsView.swift in Sources */,
+				342F4D9C81B6A775F24FEED9 /* TripReviewView.swift in Sources */,
+			
+				96FE1D845A9F2DB236D4BA7D /* ClaudeAPIClient.swift in Sources */,
+				98A8D7736521D6EAE9C493C1 /* ClaudeToolSchemas.swift in Sources */,
+				FB7CE3B907762DB4BE977AFB /* LLMChatService.swift in Sources */,
+				AA1BB2CC3DD4EE55FF660011 /* NavigationBridge.swift in Sources */,				B78DB5B149194B548B4DB653 /* UnifiedCheckoutView.swift in Sources */,
+				F8C5EBF8474B4A73A2794BD9 /* BookingListView.swift in Sources */,
+				01714D8534F447C88CFE9CCB /* SearchResultsView.swift in Sources */,
+				AA11223344556677FEED0001 /* FeedItem.swift in Sources */,
+				AA11223344556677FEED0002 /* FeedViewModel.swift in Sources */,
+				AA11223344556677FEED0003 /* FeedCard.swift in Sources */,
+);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		65A00FECA75DB13B0DDE5E2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/DCETravel/Models",
+					"$(SRCROOT)/DCETravel/Services/Protocols",
+					"$(SRCROOT)/DCETravel/Services/Server/Handlers",
+					"$(SRCROOT)/DCETravel/Services/API",
+					"$(SRCROOT)/DCETravel/Services/Mock",
+					"$(SRCROOT)/DCETravel/ViewModels",
+					"$(SRCROOT)/DCETravel/Views/Components",
+					"$(SRCROOT)/DCETravel/Views/TripSuggestions",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dce.travel;
+				PRODUCT_NAME = DCETravel;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C9EC807196FA141D2DE126C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/DCETravel/Models",
+					"$(SRCROOT)/DCETravel/Services/Protocols",
+					"$(SRCROOT)/DCETravel/Services/Server/Handlers",
+					"$(SRCROOT)/DCETravel/Services/API",
+					"$(SRCROOT)/DCETravel/Services/Mock",
+					"$(SRCROOT)/DCETravel/ViewModels",
+					"$(SRCROOT)/DCETravel/Views/Components",
+					"$(SRCROOT)/DCETravel/Views/TripSuggestions",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dce.travel;
+				PRODUCT_NAME = DCETravel;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CCD8232D9CD37ED7E9A66FF0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		F315C69FFAC942D98D5453EA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5BBC6CA00D6AF82CDC74DB06 /* Build configuration list for PBXNativeTarget "DCETravel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C9EC807196FA141D2DE126C5 /* Debug */,
+				65A00FECA75DB13B0DDE5E2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		74D551A8E8FF4872DE21F5A7 /* Build configuration list for PBXProject "DCETravel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CCD8232D9CD37ED7E9A66FF0 /* Debug */,
+				F315C69FFAC942D98D5453EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B9AAE712DC9CA216163B1B9 /* Project object */;
+}

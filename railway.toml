@@ -1,0 +1,6 @@
+[build]
+dockerfilePath = "Dockerfile"
+
+[deploy]
+startCommand = "/app/App serve --env production --hostname 0.0.0.0"
+healthcheckPath = "/api/v1/health"

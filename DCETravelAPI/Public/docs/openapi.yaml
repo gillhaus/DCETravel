@@ -1,0 +1,555 @@
+openapi: 3.0.3
+info:
+  title: DCE Travel API
+  description: Backend API for the DCE Travel Concierge iOS app. Provides travel data including flights, hotels, restaurants, car rentals, bookings, destinations, points, and user management.
+  version: 1.0.0
+  contact:
+    name: DCE Travel
+    url: https://github.com/oronhaus/DCETravel
+
+servers:
+  - url: http://localhost:8080
+    description: Local development
+  - url: https://dcetravel.up.railway.app
+    description: Production (Railway)
+
+paths:
+  /api/v1/health:
+    get:
+      summary: Health check
+      tags: [System]
+      responses:
+        '200':
+          description: Server is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  version:
+                    type: string
+                    example: "1.0"
+
+  /api/v1/flights:
+    get:
+      summary: Search flights
+      tags: [Flights]
+      parameters:
+        - name: from
+          in: query
+          schema: { type: string }
+          description: Departure airport code (e.g. LAX)
+        - name: to
+          in: query
+          schema: { type: string }
+          description: Arrival airport code (e.g. FCO)
+        - name: cabin
+          in: query
+          schema: { type: string, enum: [Economy, "Premium Economy", Business, First] }
+        - name: maxPrice
+          in: query
+          schema: { type: number }
+      responses:
+        '200':
+          description: List of matching flights
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flight'
+
+  /api/v1/flights/{id}:
+    get:
+      summary: Get flight by ID
+      tags: [Flights]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Flight details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flight'
+
+  /api/v1/flights/{id}/status:
+    get:
+      summary: Get flight status
+      tags: [Flights]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Flight status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  flightNumber: { type: string }
+                  status: { type: string }
+                  departureTime: { type: string, format: date-time }
+                  arrivalTime: { type: string, format: date-time }
+
+  /api/v1/flights/{id}/book:
+    post:
+      summary: Book a flight
+      tags: [Flights]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tripId: { type: string, format: uuid }
+                usePoints: { type: boolean }
+                passengers:
+                  type: array
+                  items: { type: string }
+      responses:
+        '200':
+          description: Booking confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+
+  /api/v1/hotels:
+    get:
+      summary: Search hotels
+      tags: [Hotels]
+      parameters:
+        - name: location
+          in: query
+          schema: { type: string }
+        - name: maxPrice
+          in: query
+          schema: { type: number }
+        - name: minRating
+          in: query
+          schema: { type: number }
+        - name: tier
+          in: query
+          schema: { type: string, enum: ["The Edit", Premium, Luxury] }
+      responses:
+        '200':
+          description: List of matching hotels
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Hotel'
+
+  /api/v1/hotels/{id}:
+    get:
+      summary: Get hotel by ID
+      tags: [Hotels]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Hotel details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Hotel'
+
+  /api/v1/hotels/{id}/book:
+    post:
+      summary: Book a hotel
+      tags: [Hotels]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tripId: { type: string, format: uuid }
+                usePoints: { type: boolean }
+                checkIn: { type: string, format: date }
+                checkOut: { type: string, format: date }
+      responses:
+        '200':
+          description: Booking confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+
+  /api/v1/cars:
+    get:
+      summary: Search car rentals
+      tags: [Car Rentals]
+      parameters:
+        - name: location
+          in: query
+          schema: { type: string }
+        - name: type
+          in: query
+          schema: { type: string, enum: [Economy, Compact, Midsize, SUV, Luxury] }
+        - name: maxPrice
+          in: query
+          schema: { type: number }
+      responses:
+        '200':
+          description: List of available car rentals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CarRental'
+
+  /api/v1/cars/{id}/book:
+    post:
+      summary: Book a car rental
+      tags: [Car Rentals]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tripId: { type: string, format: uuid }
+                usePoints: { type: boolean }
+      responses:
+        '200':
+          description: Booking confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+
+  /api/v1/restaurants:
+    get:
+      summary: Search restaurants
+      tags: [Restaurants]
+      parameters:
+        - name: location
+          in: query
+          schema: { type: string }
+        - name: cuisine
+          in: query
+          schema: { type: string }
+        - name: maxPrice
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: List of restaurants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Restaurant'
+
+  /api/v1/restaurants/{id}/reserve:
+    post:
+      summary: Reserve a table
+      tags: [Restaurants]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tripId: { type: string, format: uuid }
+                date: { type: string, format: date }
+                time: { type: string }
+                guests: { type: integer }
+      responses:
+        '200':
+          description: Reservation confirmation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Booking'
+
+  /api/v1/bookings:
+    get:
+      summary: Get all bookings
+      tags: [Bookings]
+      parameters:
+        - name: tripId
+          in: query
+          schema: { type: string, format: uuid }
+        - name: type
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: List of bookings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Booking'
+
+  /api/v1/bookings/{id}:
+    delete:
+      summary: Cancel a booking
+      tags: [Bookings]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Cancellation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  message: { type: string }
+                  pointsRefunded: { type: integer }
+
+  /api/v1/trips:
+    get:
+      summary: Get all trips
+      tags: [Trips]
+      responses:
+        '200':
+          description: List of trips
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
+
+  /api/v1/trips/{id}:
+    get:
+      summary: Get trip by ID
+      tags: [Trips]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Trip details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Trip'
+
+  /api/v1/destinations:
+    get:
+      summary: Search destinations
+      tags: [Destinations]
+      parameters:
+        - name: query
+          in: query
+          schema: { type: string }
+        - name: category
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: List of destinations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Destination'
+
+  /api/v1/points:
+    get:
+      summary: Get points balance and tier info
+      tags: [Points]
+      responses:
+        '200':
+          description: Points and rewards information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  balance: { type: integer, example: 2450000 }
+                  tier: { type: string, example: "Sapphire Reserve" }
+                  tierProgress: { type: number, example: 0.73 }
+                  nextTier: { type: string, example: "Obsidian Elite" }
+                  pointsToNextTier: { type: integer, example: 550000 }
+                  recentEarnings:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description: { type: string }
+                        points: { type: integer }
+                        date: { type: string, format: date-time }
+
+  /api/v1/user:
+    get:
+      summary: Get current user profile
+      tags: [User]
+      responses:
+        '200':
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+components:
+  schemas:
+    Flight:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        airline: { type: string, example: "United Airlines" }
+        flightNumber: { type: string, example: "UA234" }
+        departureAirport: { type: string, example: "LAX" }
+        arrivalAirport: { type: string, example: "FCO" }
+        departureTime: { type: string, format: date-time }
+        arrivalTime: { type: string, format: date-time }
+        price: { type: number, example: 1245.00 }
+        pointsCost: { type: integer, example: 85000 }
+        cabinClass: { type: string, enum: [Economy, "Premium Economy", Business, First] }
+        status: { type: string, enum: [Scheduled, Delayed, Boarding, "In Flight", Landed, Cancelled] }
+
+    Hotel:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string, example: "Hotel de Russie" }
+        brand: { type: string, example: "Rocco Forte Hotels" }
+        starRating: { type: integer, example: 5 }
+        userRating: { type: number, example: 4.8 }
+        ratingCount: { type: integer, example: 2847 }
+        location: { type: string, example: "Rome" }
+        locationDetail: { type: string, example: "Via del Babuino 9" }
+        pricePerNight: { type: number, example: 650.0 }
+        totalPrice: { type: number, example: 3900.0 }
+        pointsCost: { type: integer, example: 280000 }
+        originalPointsCost: { type: integer, example: 320000 }
+        amenities: { type: array, items: { type: string } }
+        imageURLs: { type: array, items: { type: string } }
+        tier: { type: string, enum: ["The Edit", Premium, Luxury], nullable: true }
+        description: { type: string }
+
+    Restaurant:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        cuisine: { type: string }
+        rating: { type: number }
+        priceLevel: { type: string }
+        imageURL: { type: string }
+        location: { type: string }
+        reservationDate: { type: string, format: date-time, nullable: true }
+        reservationTime: { type: string, nullable: true }
+        guestCount: { type: integer, nullable: true }
+        isBooked: { type: boolean }
+        description: { type: string }
+
+    CarRental:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        company: { type: string }
+        carType: { type: string, enum: [Economy, Compact, Midsize, SUV, Luxury] }
+        model: { type: string }
+        pricePerDay: { type: number }
+        totalPrice: { type: number }
+        pointsCost: { type: integer }
+        pickupLocation: { type: string }
+        dropoffLocation: { type: string }
+        imageURL: { type: string }
+        features: { type: array, items: { type: string } }
+        seating: { type: integer }
+
+    Booking:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        type: { type: string, enum: [Flight, Hotel, Restaurant, "Car Rental", Lounge, Activity] }
+        status: { type: string, enum: [Pending, Confirmed, Cancelled, Completed] }
+        confirmationNumber: { type: string }
+        tripId: { type: string, format: uuid }
+        details: { type: string }
+        date: { type: string, format: date-time }
+        sourceId: { type: string, format: uuid, nullable: true }
+        price: { type: number, nullable: true }
+        pointsUsed: { type: integer, nullable: true }
+        checkInDate: { type: string, format: date-time, nullable: true }
+        checkOutDate: { type: string, format: date-time, nullable: true }
+        passengers: { type: array, items: { type: string }, nullable: true }
+        guestCount: { type: integer, nullable: true }
+
+    Trip:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        destination: { type: string }
+        destinationCountry: { type: string }
+        imageURL: { type: string }
+        startDate: { type: string, format: date-time }
+        endDate: { type: string, format: date-time }
+        travelers: { type: array, items: { type: string } }
+        status: { type: string, enum: [planning, booked, active, completed] }
+        bookings: { type: array, items: { type: string, format: uuid } }
+
+    Destination:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        name: { type: string }
+        country: { type: string }
+        imageURL: { type: string }
+        tags: { type: array, items: { type: string } }
+        description: { type: string }
+        category: { type: string }
+
+    User:
+      type: object
+      properties:
+        id: { type: string, format: uuid }
+        firstName: { type: string }
+        lastName: { type: string }
+        email: { type: string }
+        pointsBalance: { type: integer }
+        membershipTier: { type: string }
