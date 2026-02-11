@@ -19,8 +19,10 @@ func configure(_ app: Application) throws {
     ContentConfiguration.global.use(encoder: encoder, for: .json)
     ContentConfiguration.global.use(decoder: decoder, for: .json)
 
-    // Set port
-    app.http.server.configuration.port = 8080
+    // Set port (Railway provides PORT env var)
+    let port = Environment.get("PORT").flatMap(Int.init) ?? 8080
+    app.http.server.configuration.port = port
+    app.http.server.configuration.hostname = "0.0.0.0"
 
     // Register routes
     try routes(app)
