@@ -105,6 +105,10 @@
 		AA11223344556677FEED0001 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22334455667788FEED0001 /* FeedItem.swift */; };
 		AA11223344556677FEED0002 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22334455667788FEED0002 /* FeedViewModel.swift */; };
 		AA11223344556677FEED0003 /* FeedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB22334455667788FEED0003 /* FeedCard.swift */; };
+		A1B2C3D4E5F60201AABB0001 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0001 /* HomeViewModel.swift */; };
+		A1B2C3D4E5F60201AABB0002 /* ConciergeHeroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0002 /* ConciergeHeroCard.swift */; };
+		A1B2C3D4E5F60201AABB0003 /* ConciergeHighlightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0003 /* ConciergeHighlightCard.swift */; };
+		A1B2C3D4E5F60201AABB0004 /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0004 /* ProfileSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -207,6 +211,10 @@
 		BB22334455667788FEED0001 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		BB22334455667788FEED0002 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		BB22334455667788FEED0003 /* FeedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCard.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60101AABB0001 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60101AABB0002 /* ConciergeHeroCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeHeroCard.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60101AABB0003 /* ConciergeHighlightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeHighlightCard.swift; sourceTree = "<group>"; };
+		A1B2C3D4E5F60101AABB0004 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -234,6 +242,8 @@
 				55CC443C1E2C00618E71499D /* TagChip.swift */,
 				BE12E58B834FB4C19FE4B046 /* TripProgressCard.swift */,
 				7FDB79C95BE7AC40029F22F3 /* UpdateAlertCard.swift */,
+				A1B2C3D4E5F60101AABB0002 /* ConciergeHeroCard.swift */,
+				A1B2C3D4E5F60101AABB0003 /* ConciergeHighlightCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -367,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				DA5B03A9641A56B1426C0BD2 /* HomeView.swift */,
+				A1B2C3D4E5F60101AABB0004 /* ProfileSheetView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -428,6 +439,7 @@
 			children = (
 				64581AD4DC35E710B80CFFF8 /* ChatViewModel.swift */,
 				BB22334455667788FEED0002 /* FeedViewModel.swift */,
+				A1B2C3D4E5F60101AABB0001 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -695,6 +707,10 @@
 				AA11223344556677FEED0001 /* FeedItem.swift in Sources */,
 				AA11223344556677FEED0002 /* FeedViewModel.swift in Sources */,
 				AA11223344556677FEED0003 /* FeedCard.swift in Sources */,
+				A1B2C3D4E5F60201AABB0001 /* HomeViewModel.swift in Sources */,
+				A1B2C3D4E5F60201AABB0002 /* ConciergeHeroCard.swift in Sources */,
+				A1B2C3D4E5F60201AABB0003 /* ConciergeHighlightCard.swift in Sources */,
+				A1B2C3D4E5F60201AABB0004 /* ProfileSheetView.swift in Sources */,
 );
 			runOnlyForDeploymentPostprocessing = 0;
 		};

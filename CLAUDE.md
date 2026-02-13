@@ -24,7 +24,7 @@ railway up --service Travel
 ## Repository Structure
 
 ```
-DCETravel/           iOS app (SwiftUI, MVVM, 94 Swift files)
+DCETravel/           iOS app (SwiftUI, MVVM, 102 Swift files)
 DCETravelAPI/        Vapor 4 API server (26 Swift files)
 Dockerfile           Multi-stage Docker build for Railway
 railway.toml         Railway deployment config
@@ -78,9 +78,13 @@ To get an Anthropic API key: https://console.anthropic.com/settings/keys
 | `ClaudeToolSchemas.swift` | Tool definitions (search, book, navigate, points, trips) |
 | `NavigationBridge.swift` | LLM-to-UI navigation bridge (pendingNavigation → router) |
 | `AgentChatService.swift` | Fallback agent — intent parsing without LLM |
+| `HomeViewModel.swift` | Home page data: upcoming trip, countdown, bookings, AI suggestion, points |
 | `FeedViewModel.swift` | Social feed generation (countdowns, bookings, suggestions, weather, prices) |
+| `ConciergeHeroCard.swift` | Hero trip card with AsyncImage, gradient overlay, countdown |
+| `ConciergeHighlightCard.swift` | Highlight card with 3 variants: booking, AI suggestion, points |
+| `ProfileSheetView.swift` | Profile modal sheet with user info, tier, menu navigation |
 | `FeedCard.swift` | Feed card component with 7 card types and accent colors |
-| `HomeView.swift` | Social feed home page with pill bar, feed cards, inspiration |
+| `HomeView.swift` | Concierge home: chat CTA, hero card, quick actions, highlights, inspiration |
 | `ChatView.swift` | Chat UI with rich content, typing indicator, suggested actions, navigation |
 | `ChatViewModel.swift` | Chat state, message persistence, navigation intent mapping |
 | `ContentView.swift` | Root navigation — LanderView → HomeView flow |

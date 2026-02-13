@@ -59,12 +59,14 @@ class AppRouter: ObservableObject {
         case actionsGrid
         case hotelDetail(hotelId: UUID)
         case tripItinerary(tripId: UUID)
+        case profile
 
         var id: String {
             switch self {
             case .actionsGrid: return "actionsGrid"
             case .hotelDetail(let id): return "hotel-\(id)"
             case .tripItinerary(let id): return "itinerary-\(id)"
+            case .profile: return "profile"
             }
         }
     }

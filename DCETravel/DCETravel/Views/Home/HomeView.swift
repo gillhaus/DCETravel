@@ -3,51 +3,55 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var router: AppRouter
-    @StateObject private var feedViewModel = FeedViewModel()
+    @StateObject private var viewModel = HomeViewModel()
     @State private var chatText = ""
-
-    private struct PillTab: Identifiable {
-        let id = UUID()
-        let title: String
-        let icon: String
-    }
-
-    private let pillTabs: [PillTab] = [
-        PillTab(title: "Trips", icon: "airplane"),
-        PillTab(title: "Search", icon: "magnifyingglass"),
-        PillTab(title: "Points", icon: "star.circle.fill")
-    ]
+    @State private var appeared = false
 
     var body: some View {
         ZStack {
             DCEColors.warmBackground.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                ScrollView(showsIndicators: false) {
-                    VStack(alignment: .leading, spacing: 24) {
-                        // Horizontal pill bar
-                        pillBar
+            ScrollView(showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 24) {
+                    // Concierge chat section
+                    conciergeSection
+                        .opacity(appeared ? 1 : 0)
+                        .offset(y: appeared ? 0 : 12)
 
-                        // Social feed
-                        feedSection
-
-                        // Inspiration section
-                        inspirationSection
-
-                        Spacer(minLength: 100)
+                    // Hero trip card
+                    if let trip = viewModel.upcomingTrip {
+                        ConciergeHeroCard(
+                            trip: trip,
+                            daysUntil: viewModel.daysUntilTrip,
+                            bookingsCount: viewModel.tripBookingsCount
+                        ) {
+                            router.navigate(to: .tripReview(tripId: trip.id))
+                        }
+                        .opacity(appeared ? 1 : 0)
+                        .offset(y: appeared ? 0 : 16)
                     }
-                }
-                .refreshable {
-                    await feedViewModel.loadFeed(appState: appState)
-                }
 
-                // Bottom chat bar
-                ChatInputBar(
-                    text: $chatText,
-                    onSend: { sendMessage() },
-                    onCamera: {},
-                    onMic: {}
-                )
+                    // Quick actions
+                    quickActionsRow
+                        .opacity(appeared ? 1 : 0)
+                        .offset(y: appeared ? 0 : 12)
+
+                    // For You highlights
+                    forYouSection
+                        .opacity(appeared ? 1 : 0)
+                        .offset(y: appeared ? 0 : 12)
+
+                    // Inspiration carousel
+                    inspirationSection
+                        .opacity(appeared ? 1 : 0)
+                        .offset(y: appeared ? 0 : 12)
+
+                    Spacer(minLength: 40)
+                }
+                .padding(.top, 8)
+            }
+            .refreshable {
+                await viewModel.loadData(appState: appState)
             }
         }
         .navigationTitle("Travel Concierge")
@@ -57,129 +61,220 @@ struct HomeView: View {
                 Button {
                     router.navigate(to: .actionsGrid)
                 } label: {
-                    Image(systemName: "clock")
+                    Image(systemName: "square.grid.2x2")
+                        .font(.system(size: 16, weight: .medium))
                         .foregroundColor(DCEColors.navy)
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
-                    // profile action
+                    router.presentSheet(.profile)
                 } label: {
-                    Image(systemName: "person.circle")
+                    Image(systemName: "person.circle.fill")
+                        .font(.system(size: 20))
                         .foregroundColor(DCEColors.navy)
                 }
             }
         }
         .task {
-            await feedViewModel.loadFeed(appState: appState)
+            await viewModel.loadData(appState: appState)
+            withAnimation(.easeOut(duration: 0.6)) {
+                appeared = true
+            }
         }
     }
 
-    // MARK: - Pill Bar
+    // MARK: - Concierge Section
 
-    private var pillBar: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
-                ForEach(pillTabs) { tab in
-                    Button {
-                        handlePillTap(tab)
-                    } label: {
-                        HStack(spacing: 6) {
-                            Image(systemName: tab.icon)
-                                .font(.system(size: 13, weight: .medium))
-                            Text(tab.title)
-                                .font(DCEFonts.labelMedium())
-                        }
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 18)
-                        .padding(.vertical, 10)
-                        .background(
-                            Capsule()
-                                .fill(DCEColors.navy)
-                        )
-                    }
+    private var conciergeSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text("What can I help you plan?")
+                .font(DCEFonts.displayMedium())
+                .foregroundColor(DCEColors.primaryText)
+                .padding(.horizontal, 20)
+
+            // Chat input
+            Button {
+                if let trip = appState.activeTrips.first {
+                    router.navigate(to: .chat(tripId: trip.id))
                 }
+            } label: {
+                HStack(spacing: 10) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(DCEColors.copper)
+                    Text("Ask away, and elevate any trip")
+                        .font(DCEFonts.bodyMedium())
+                        .foregroundColor(DCEColors.tertiaryText)
+                    Spacer()
+                    Image(systemName: "mic")
+                        .font(.system(size: 16))
+                        .foregroundColor(DCEColors.secondaryText)
+                }
+                .padding(.horizontal, 18)
+                .padding(.vertical, 14)
+                .background(DCEColors.cardBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .shadow(color: DCEColors.navy.opacity(0.06), radius: 8, x: 0, y: 3)
+                .shadow(color: .black.opacity(0.02), radius: 2, x: 0, y: 1)
             }
+            .buttonStyle(.plain)
             .padding(.horizontal, 20)
+
+            // Suggestion pills
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 10) {
+                    suggestionPill("Flights", icon: "airplane")
+                    suggestionPill("Hotels", icon: "building.2")
+                    suggestionPill("Restaurants", icon: "fork.knife")
+                    suggestionPill("Explore", icon: "map")
+                }
+                .padding(.horizontal, 20)
+            }
         }
-        .padding(.top, 8)
     }
 
-    // MARK: - Feed Section
+    private func suggestionPill(_ title: String, icon: String) -> some View {
+        Button {
+            if let trip = appState.activeTrips.first {
+                appState.pendingChatAction = "Help me find \(title.lowercased()) for my trip"
+                router.navigate(to: .chat(tripId: trip.id))
+            }
+        } label: {
+            HStack(spacing: 6) {
+                Image(systemName: icon)
+                    .font(.system(size: 11, weight: .semibold))
+                Text(title)
+                    .font(DCEFonts.labelMedium())
+            }
+            .foregroundColor(DCEColors.navy)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 9)
+            .background(
+                Capsule()
+                    .fill(DCEColors.cardBackground)
+                    .shadow(color: DCEColors.navy.opacity(0.06), radius: 4, x: 0, y: 2)
+            )
+            .overlay(
+                Capsule()
+                    .strokeBorder(DCEColors.navy.opacity(0.12), lineWidth: 1)
+            )
+        }
+    }
 
-    private var feedSection: some View {
-        LazyVStack(spacing: 12) {
-            ForEach(feedViewModel.feedItems) { item in
-                FeedCard(item: item) { action in
-                    handleFeedAction(action)
+    // MARK: - Quick Actions
+
+    private var quickActionsRow: some View {
+        HStack(spacing: 0) {
+            quickAction("Flights", icon: "airplane", category: .flights)
+            quickAction("Hotels", icon: "building.2", category: .hotels)
+            quickAction("Dining", icon: "fork.knife", category: .restaurants)
+            quickAction("Cars", icon: "car.fill", category: .cars)
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 20)
+    }
+
+    private func quickAction(_ title: String, icon: String, category: SearchCategory) -> some View {
+        Button {
+            if let trip = appState.activeTrips.first {
+                router.navigate(to: .searchResults(tripId: trip.id, category: category))
+            }
+        } label: {
+            VStack(spacing: 8) {
+                Image(systemName: icon)
+                    .font(.system(size: 20, weight: .medium))
+                    .foregroundColor(DCEColors.navy)
+                    .frame(width: 54, height: 54)
+                    .background(
+                        Circle()
+                            .fill(DCEColors.cardBackground)
+                            .shadow(color: DCEColors.navy.opacity(0.08), radius: 6, x: 0, y: 2)
+                    )
+                Text(title)
+                    .font(DCEFonts.labelSmall())
+                    .foregroundColor(DCEColors.secondaryText)
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .buttonStyle(.plain)
+    }
+
+    // MARK: - For You Section
+
+    private var forYouSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionHeader("For You", icon: "heart.fill")
+
+            // Next booking card
+            if let booking = viewModel.nextBooking {
+                ConciergeHighlightCard(variant: .nextBooking(booking: booking)) {
+                    router.navigate(to: .bookingList(tripId: booking.tripId))
+                }
+            }
+
+            // AI suggestion card
+            if let suggestion = viewModel.aiSuggestion {
+                ConciergeHighlightCard(variant: .aiSuggestion(title: suggestion.title, subtitle: suggestion.subtitle)) {
+                    appState.pendingChatAction = "Tell me more about: \(suggestion.title)"
+                    router.navigate(to: .chat(tripId: suggestion.tripId))
+                }
+            }
+
+            // Points summary card
+            ConciergeHighlightCard(
+                variant: .pointsSummary(
+                    balance: viewModel.formattedPoints,
+                    tier: viewModel.membershipTier.rawValue,
+                    value: viewModel.formattedPointsValue
+                )
+            ) {
+                if let trip = appState.activeTrips.first {
+                    router.navigate(to: .searchResults(tripId: trip.id, category: .points))
                 }
             }
         }
-        .padding(.horizontal, 20)
     }
 
     // MARK: - Inspiration Section
 
     private var inspirationSection: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Inspiration for your next trip")
-                .font(DCEFonts.headlineMedium())
-                .foregroundColor(DCEColors.primaryText)
-                .padding(.horizontal, 20)
+            sectionHeader("Inspiration", icon: "globe.americas.fill")
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 14) {
-                    let destinations = appState.inspirationDestinations.isEmpty
-                        ? MockData.destinations
-                        : appState.inspirationDestinations
-                    ForEach(destinations) { destination in
-                        DestinationCard(destination: destination) {
+                    ForEach(viewModel.inspirationDestinations) { destination in
+                        DestinationCard(destination: destination, width: 200, height: 260) {
                             if let trip = appState.activeTrips.first {
                                 appState.pendingChatAction = "Tell me about \(destination.name), \(destination.country)"
                                 router.navigate(to: .chat(tripId: trip.id))
                             }
                         }
+                        .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
                     }
                 }
                 .padding(.horizontal, 20)
+                .padding(.bottom, 4)
             }
         }
+    }
+
+    // MARK: - Helpers
+
+    private func sectionHeader(_ title: String, icon: String) -> some View {
+        HStack(spacing: 8) {
+            Image(systemName: icon)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(DCEColors.copper)
+            Text(title)
+                .font(DCEFonts.headlineMedium())
+                .foregroundColor(DCEColors.primaryText)
+        }
+        .padding(.horizontal, 20)
     }
 
     // MARK: - Actions
-
-    private func handlePillTap(_ tab: PillTab) {
-        switch tab.title {
-        case "Trips":
-            router.navigate(to: .tripSuggestions)
-        case "Search":
-            if let trip = appState.activeTrips.first {
-                router.navigate(to: .searchResults(tripId: trip.id, category: .flights))
-            }
-        case "Points":
-            if let trip = appState.activeTrips.first {
-                router.navigate(to: .searchResults(tripId: trip.id, category: .points))
-            }
-        default:
-            break
-        }
-    }
-
-    private func handleFeedAction(_ action: FeedItem.FeedAction) {
-        switch action {
-        case .openTrip(let tripId):
-            router.navigate(to: .tripReview(tripId: tripId))
-        case .openChat(let tripId, let message):
-            appState.pendingChatAction = message
-            router.navigate(to: .chat(tripId: tripId))
-        case .openSearch(let tripId, let category):
-            router.navigate(to: .searchResults(tripId: tripId, category: category))
-        case .openBooking(let tripId):
-            router.navigate(to: .bookingList(tripId: tripId))
-        case .openCheckout(let tripId, let item):
-            router.navigate(to: .itemCheckout(tripId: tripId, item: item))
-        }
-    }
 
     private func sendMessage() {
         guard !chatText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else { return }

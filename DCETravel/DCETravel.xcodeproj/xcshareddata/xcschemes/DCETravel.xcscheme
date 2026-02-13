@@ -52,6 +52,11 @@
       </BuildableProductRunnable>
       <EnvironmentVariables>
          <EnvironmentVariable
+            key = "API_BASE_URL"
+            value = "https://travel-production-d172.up.railway.app"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
             key = "ANTHROPIC_API_KEY"
             value = "YOUR_KEY_HERE"
             isEnabled = "YES">
