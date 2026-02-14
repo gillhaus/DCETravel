@@ -11,6 +11,7 @@ struct User: Identifiable, Codable {
     var tripHistory: [UUID]
 
     var fullName: String { "\(firstName) \(lastName)" }
+    var initials: String { "\(firstName.prefix(1))\(lastName.prefix(1))" }
 
     enum MembershipTier: String, Codable, CaseIterable {
         case sapphire = "Sapphire"

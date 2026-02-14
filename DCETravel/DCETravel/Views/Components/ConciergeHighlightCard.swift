@@ -74,7 +74,13 @@ struct ConciergeHighlightCard: View {
                     bottomTrailingRadius: 0,
                     topTrailingRadius: 0
                 )
-                .fill(accentColor)
+                .fill(
+                    LinearGradient(
+                        colors: [accentColor, accentColor.opacity(0.6)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
                 .frame(width: 4)
 
                 HStack(spacing: 14) {

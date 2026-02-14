@@ -70,9 +70,20 @@ struct HomeView: View {
                 Button {
                     router.presentSheet(.profile)
                 } label: {
-                    Image(systemName: "person.circle.fill")
-                        .font(.system(size: 20))
-                        .foregroundColor(DCEColors.navy)
+                    Text(appState.currentUser.initials)
+                        .font(.system(size: 12, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(width: 32, height: 32)
+                        .background(
+                            Circle()
+                                .fill(
+                                    LinearGradient(
+                                        colors: [DCEColors.navy, Color(hex: "2D4A7A")],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
+                                )
+                        )
                 }
             }
         }
@@ -88,10 +99,23 @@ struct HomeView: View {
 
     private var conciergeSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Text("What can I help you plan?")
-                .font(DCEFonts.displayMedium())
-                .foregroundColor(DCEColors.primaryText)
-                .padding(.horizontal, 20)
+            VStack(alignment: .leading, spacing: 6) {
+                Text("What can I help\nyou plan?")
+                    .font(DCEFonts.displayMedium())
+                    .foregroundColor(DCEColors.primaryText)
+
+                // Copper accent underline
+                RoundedRectangle(cornerRadius: 1)
+                    .fill(
+                        LinearGradient(
+                            colors: [DCEColors.copper, DCEColors.copper.opacity(0.4)],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .frame(width: 40, height: 2)
+            }
+            .padding(.horizontal, 20)
 
             // Chat input
             Button {

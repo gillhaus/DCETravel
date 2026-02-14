@@ -39,12 +39,13 @@ struct DestinationCard: View {
 
                 VStack(alignment: .leading, spacing: 4) {
                     if let category = destination.category.rawValue as String? {
-                        Text(category)
-                            .font(DCEFonts.caption())
-                            .foregroundColor(.white.opacity(0.8))
+                        Text(category.uppercased())
+                            .font(.system(size: 9, weight: .bold))
+                            .tracking(1.2)
+                            .foregroundColor(.white.opacity(0.75))
                     }
                     Text(destination.name)
-                        .font(DCEFonts.headlineSmall())
+                        .font(.system(size: 18, weight: .semibold, design: .serif))
                         .foregroundColor(.white)
                     if let dates = destination.suggestedDates {
                         Text(dates)
