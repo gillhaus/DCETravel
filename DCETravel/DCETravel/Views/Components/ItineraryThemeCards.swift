@@ -42,7 +42,7 @@ struct ItineraryThemeCard: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
-                        .background(.black.opacity(0.5))
+                        .background(DCEColors.navy.opacity(0.7))
                         .cornerRadius(4)
                         .padding(10)
                 }
@@ -64,7 +64,8 @@ struct ItineraryThemeCard: View {
             .frame(width: 220)
             .background(DCEColors.cardBackground)
             .cornerRadius(14)
-            .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
     }

@@ -85,7 +85,7 @@ struct BookingListView: View {
                 HStack(spacing: 8) {
                     Image(systemName: icon)
                         .font(.system(size: 16))
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                     Text(title)
                         .font(DCEFonts.headlineMedium())
                         .foregroundColor(DCEColors.primaryText)
@@ -103,9 +103,9 @@ struct BookingListView: View {
         HStack(spacing: 12) {
             Image(systemName: iconForType(booking.type))
                 .font(.system(size: 16))
-                .foregroundColor(isCancelled ? DCEColors.secondaryText : DCEColors.navy)
+                .foregroundColor(isCancelled ? DCEColors.secondaryText : DCEColors.gold)
                 .frame(width: 36, height: 36)
-                .background(isCancelled ? DCEColors.secondaryText.opacity(0.1) : DCEColors.navy.opacity(0.1))
+                .background(isCancelled ? DCEColors.secondaryText.opacity(0.1) : DCEColors.goldDim)
                 .cornerRadius(8)
 
             VStack(alignment: .leading, spacing: 4) {
@@ -138,7 +138,7 @@ struct BookingListView: View {
                 } label: {
                     Text("Cancel")
                         .font(DCEFonts.caption())
-                        .foregroundColor(.red)
+                        .foregroundColor(DCEColors.error)
                 }
             } else {
                 Text("Cancelled")
@@ -149,7 +149,8 @@ struct BookingListView: View {
         .padding(14)
         .background(DCEColors.cardBackground)
         .cornerRadius(12)
-        .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 2)
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         .padding(.horizontal, 20)
         .opacity(isCancelled ? 0.6 : 1.0)
     }

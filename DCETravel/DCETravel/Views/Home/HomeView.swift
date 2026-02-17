@@ -63,7 +63,7 @@ struct HomeView: View {
                 } label: {
                     Image(systemName: "square.grid.2x2")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
@@ -72,13 +72,13 @@ struct HomeView: View {
                 } label: {
                     Text(appState.currentUser.initials)
                         .font(.system(size: 12, weight: .bold))
-                        .foregroundColor(.white)
+                        .foregroundColor(DCEColors.navy)
                         .frame(width: 32, height: 32)
                         .background(
                             Circle()
                                 .fill(
                                     LinearGradient(
-                                        colors: [DCEColors.navy, Color(hex: "2D4A7A")],
+                                        colors: [DCEColors.gold, DCEColors.goldLight],
                                         startPoint: .topLeading,
                                         endPoint: .bottomTrailing
                                     )
@@ -139,8 +139,12 @@ struct HomeView: View {
                 .padding(.vertical, 14)
                 .background(DCEColors.cardBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: DCEColors.navy.opacity(0.06), radius: 8, x: 0, y: 3)
-                .shadow(color: .black.opacity(0.02), radius: 2, x: 0, y: 1)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(DCEColors.glassBorder, lineWidth: 1)
+                )
+                .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 3)
+                .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
             }
             .buttonStyle(.plain)
             .padding(.horizontal, 20)
@@ -171,17 +175,17 @@ struct HomeView: View {
                 Text(title)
                     .font(DCEFonts.labelMedium())
             }
-            .foregroundColor(DCEColors.navy)
+            .foregroundColor(DCEColors.secondaryText)
             .padding(.horizontal, 16)
             .padding(.vertical, 9)
             .background(
                 Capsule()
                     .fill(DCEColors.cardBackground)
-                    .shadow(color: DCEColors.navy.opacity(0.06), radius: 4, x: 0, y: 2)
+                    .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
             )
             .overlay(
                 Capsule()
-                    .strokeBorder(DCEColors.navy.opacity(0.12), lineWidth: 1)
+                    .strokeBorder(DCEColors.glassBorder, lineWidth: 1)
             )
         }
     }
@@ -208,12 +212,16 @@ struct HomeView: View {
             VStack(spacing: 8) {
                 Image(systemName: icon)
                     .font(.system(size: 20, weight: .medium))
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                     .frame(width: 54, height: 54)
                     .background(
                         Circle()
                             .fill(DCEColors.cardBackground)
-                            .shadow(color: DCEColors.navy.opacity(0.08), radius: 6, x: 0, y: 2)
+                            .overlay(
+                                Circle()
+                                    .stroke(DCEColors.glassBorder, lineWidth: 1)
+                            )
+                            .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 2)
                     )
                 Text(title)
                     .font(DCEFonts.labelSmall())
@@ -275,7 +283,7 @@ struct HomeView: View {
                                 router.navigate(to: .chat(tripId: trip.id))
                             }
                         }
-                        .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
+                        .shadow(color: .black.opacity(0.3), radius: 8, x: 0, y: 4)
                     }
                 }
                 .padding(.horizontal, 20)
@@ -290,7 +298,7 @@ struct HomeView: View {
         HStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(DCEColors.copper)
+                .foregroundColor(DCEColors.gold)
             Text(title)
                 .font(DCEFonts.headlineMedium())
                 .foregroundColor(DCEColors.primaryText)

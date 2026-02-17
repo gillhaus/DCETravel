@@ -26,10 +26,10 @@ struct ConfirmationView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "diamond.fill")
                             .font(.system(size: 20))
-                            .foregroundColor(DCEColors.navy)
+                            .foregroundColor(DCEColors.gold)
                         Text("Travel")
                             .font(DCEFonts.headlineLarge())
-                            .foregroundColor(DCEColors.navy)
+                            .foregroundColor(DCEColors.gold)
                     }
                     .padding(.top, 20)
                     .opacity(animateContent ? 1 : 0)
@@ -88,7 +88,7 @@ struct ConfirmationView: View {
 
                         BenefitCard(
                             icon: "creditcard.fill",
-                            iconColor: DCEColors.navy,
+                            iconColor: DCEColors.gold,
                             title: "Credits applied",
                             detail: "$500 statement credit · $300 annual travel credit"
                         )
@@ -193,7 +193,8 @@ struct BenefitCard: View {
         .padding(16)
         .background(DCEColors.cardBackground)
         .cornerRadius(12)
-        .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 2)
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
     }
 }
 

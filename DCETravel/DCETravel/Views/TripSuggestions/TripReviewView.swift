@@ -21,7 +21,7 @@ struct TripReviewView: View {
                     if viewModel.isLoading && viewModel.flights.isEmpty {
                         Spacer()
                         ProgressView()
-                            .tint(DCEColors.navy)
+                            .tint(DCEColors.gold)
                         Spacer()
                     } else {
                         ScrollView(showsIndicators: false) {
@@ -212,7 +212,7 @@ struct TripReviewView: View {
             HStack(spacing: 8) {
                 Image(systemName: icon)
                     .font(.system(size: 16))
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text(title)
                     .font(DCEFonts.headlineMedium())
                     .foregroundColor(DCEColors.primaryText)

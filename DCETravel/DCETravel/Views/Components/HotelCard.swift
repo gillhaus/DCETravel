@@ -78,7 +78,7 @@ struct HotelCard: View {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("$\(Int(hotel.totalPrice))")
                                 .font(DCEFonts.headlineLarge())
-                                .foregroundColor(DCEColors.primaryText)
+                                .foregroundColor(DCEColors.gold)
                         }
 
                         Spacer()
@@ -100,7 +100,8 @@ struct HotelCard: View {
             }
             .background(DCEColors.cardBackground)
             .cornerRadius(16)
-            .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.3), radius: 8, x: 0, y: 2)
         }
         .buttonStyle(.plain)
     }

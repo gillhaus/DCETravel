@@ -46,21 +46,36 @@ struct ChatInputBar: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
-            .background(DCEColors.warmBackground)
+            .background(DCEColors.cardBackground)
+            .overlay(
+                RoundedRectangle(cornerRadius: 24)
+                    .stroke(DCEColors.glassBorder, lineWidth: 1)
+            )
             .cornerRadius(24)
 
             if !text.isEmpty {
                 Button(action: onSend) {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.system(size: 32))
-                        .foregroundColor(DCEColors.navy)
+                    ZStack {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [DCEColors.gold, DCEColors.copper],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 36, height: 36)
+                        Image(systemName: "arrow.up")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(DCEColors.navy)
+                    }
                 }
                 .transition(.scale.combined(with: .opacity))
             }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(.ultraThinMaterial)
+        .background(DCEColors.warmBackground.opacity(0.95))
         .animation(.easeInOut(duration: 0.2), value: text.isEmpty)
     }
 }

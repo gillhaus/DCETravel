@@ -30,7 +30,7 @@ struct CarRentalCard: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
-                        .background(DCEColors.navy)
+                        .background(DCEColors.copper)
                         .cornerRadius(4)
                         .padding(10)
                 }
@@ -40,7 +40,7 @@ struct CarRentalCard: View {
                     HStack(spacing: 4) {
                         Image(systemName: "car.fill")
                             .font(.system(size: 12))
-                            .foregroundColor(DCEColors.navy)
+                            .foregroundColor(DCEColors.gold)
                         Text(car.company)
                             .font(DCEFonts.labelMedium())
                             .foregroundColor(DCEColors.secondaryText)
@@ -64,7 +64,7 @@ struct CarRentalCard: View {
                     HStack {
                         Text("$\(Int(car.pricePerDay))/day")
                             .font(DCEFonts.labelLarge())
-                            .foregroundColor(DCEColors.primaryText)
+                            .foregroundColor(DCEColors.gold)
                         Spacer()
                         Text("\(car.pointsCost.formatted()) pts")
                             .font(DCEFonts.labelMedium())
@@ -75,7 +75,8 @@ struct CarRentalCard: View {
             }
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .frame(maxWidth: 260)

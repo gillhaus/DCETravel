@@ -2,35 +2,45 @@ import SwiftUI
 
 enum DCEColors {
     // Primary
-    static let navy = Color(hex: "1A2B4A")
+    static let navy = Color(hex: "0A1628")
     static let copper = Color(hex: "C26A2F")
 
+    // Gold accent system
+    static let gold = Color(hex: "C9A96E")
+    static let goldLight = Color(hex: "D4B87A")
+    static let goldDim = Color(hex: "C9A96E").opacity(0.15)
+
     // Backgrounds
-    static let warmBackground = Color(hex: "F8F6F3")
-    static let creamBackground = Color(hex: "F5F0EA")
-    static let cardBackground = Color.white
+    static let warmBackground = Color(hex: "0A1628")
+    static let creamBackground = Color(hex: "0F1D32")
+    static let cardBackground = Color(hex: "14243D")
+    static let cardBackgroundElevated = Color(hex: "1A2B4A")
+
+    // Glass-morphism
+    static let glass = Color.white.opacity(0.04)
+    static let glassBorder = Color.white.opacity(0.08)
 
     // Chat
-    static let agentBubble = Color(hex: "F5F0EA")
-    static let userBubble = Color.white
+    static let agentBubble = Color(hex: "14243D")
+    static let userBubble = Color(hex: "1A2B4A")
 
     // Status
-    static let success = Color(hex: "2D8B4E")
-    static let warning = Color(hex: "E8A317")
-    static let error = Color(hex: "D64045")
+    static let success = Color(hex: "3DD68C")
+    static let warning = Color(hex: "F5A623")
+    static let error = Color(hex: "E85454")
 
     // Text
-    static let primaryText = Color(hex: "1A2B4A")
-    static let secondaryText = Color(hex: "6B7280")
-    static let tertiaryText = Color(hex: "9CA3AF")
+    static let primaryText = Color(hex: "F0EDE8")
+    static let secondaryText = Color(hex: "8B9BB4")
+    static let tertiaryText = Color(hex: "5A6A82")
 
     // Points
-    static let pointsBoostBackground = Color(hex: "1A2B4A")
+    static let pointsBoostBackground = Color(hex: "14243D")
     static let pointsBoostAccent = Color(hex: "C9A96E")
 
     // Misc
-    static let divider = Color(hex: "E5E7EB")
-    static let shimmer = Color(hex: "E8E4DF")
+    static let divider = Color.white.opacity(0.06)
+    static let shimmer = Color(hex: "1A2B4A")
 }
 
 extension Color {

@@ -74,7 +74,7 @@ struct SearchResultsView: View {
                     router.navigate(to: .chat(tripId: tripId))
                 } label: {
                     Image(systemName: "bubble.left.and.bubble.right")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
         }
@@ -91,9 +91,9 @@ struct SearchResultsView: View {
         HStack(spacing: 10) {
             Image(systemName: category.icon)
                 .font(.system(size: 20))
-                .foregroundColor(DCEColors.navy)
+                .foregroundColor(DCEColors.gold)
                 .frame(width: 36, height: 36)
-                .background(DCEColors.navy.opacity(0.1))
+                .background(DCEColors.goldDim)
                 .cornerRadius(8)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -115,7 +115,7 @@ struct SearchResultsView: View {
                     .foregroundColor(DCEColors.secondaryText)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .background(DCEColors.navy.opacity(0.08))
+                    .background(DCEColors.goldDim)
                     .cornerRadius(10)
             }
         }
@@ -185,7 +185,7 @@ struct SearchResultsView: View {
                                 HStack(spacing: 4) {
                                     Image(systemName: "airplane")
                                         .font(.system(size: 12))
-                                        .foregroundColor(DCEColors.navy)
+                                        .foregroundColor(DCEColors.gold)
                                     Text(flight.airline)
                                         .font(DCEFonts.labelMedium())
                                         .foregroundColor(DCEColors.secondaryText)
@@ -215,24 +215,25 @@ struct SearchResultsView: View {
                             VStack(alignment: .trailing, spacing: 4) {
                                 Text("$\(Int(flight.price))")
                                     .font(DCEFonts.headlineMedium())
-                                    .foregroundColor(DCEColors.primaryText)
+                                    .foregroundColor(DCEColors.gold)
                                 Text("\(flight.pointsCost.formatted()) pts")
                                     .font(DCEFonts.labelSmall())
                                     .foregroundColor(DCEColors.copper)
 
                                 Text("Select")
                                     .font(DCEFonts.labelSmall())
-                                    .foregroundColor(.white)
+                                    .foregroundColor(DCEColors.navy)
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 6)
-                                    .background(DCEColors.navy)
+                                    .background(DCEColors.gold)
                                     .cornerRadius(14)
                             }
                         }
                         .padding(16)
                         .background(DCEColors.cardBackground)
                         .cornerRadius(14)
-                        .shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 2)
+                        .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+                        .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
@@ -291,17 +292,17 @@ struct SearchResultsView: View {
                                 HStack {
                                     Text("$\(Int(hotel.totalPrice))")
                                         .font(DCEFonts.labelLarge())
-                                        .foregroundColor(DCEColors.primaryText)
+                                        .foregroundColor(DCEColors.gold)
                                     Text("/ \(hotel.pointsCost.formatted()) pts")
                                         .font(DCEFonts.caption())
                                         .foregroundColor(DCEColors.copper)
                                     Spacer()
                                     Text("Select")
                                         .font(DCEFonts.labelSmall())
-                                        .foregroundColor(.white)
+                                        .foregroundColor(DCEColors.navy)
                                         .padding(.horizontal, 14)
                                         .padding(.vertical, 6)
-                                        .background(DCEColors.navy)
+                                        .background(DCEColors.gold)
                                         .cornerRadius(14)
                                 }
                             }
@@ -309,7 +310,8 @@ struct SearchResultsView: View {
                         .padding(12)
                         .background(DCEColors.cardBackground)
                         .cornerRadius(14)
-                        .shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 2)
+                        .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+                        .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
@@ -350,7 +352,7 @@ struct SearchResultsView: View {
                             VStack(alignment: .leading, spacing: 6) {
                                 Text(car.carType.rawValue)
                                     .font(DCEFonts.caption())
-                                    .foregroundColor(DCEColors.navy)
+                                    .foregroundColor(DCEColors.gold)
 
                                 Text("\(car.company) \(car.model)")
                                     .font(DCEFonts.headlineSmall())
@@ -363,17 +365,17 @@ struct SearchResultsView: View {
                                 HStack {
                                     Text("$\(Int(car.pricePerDay))/day")
                                         .font(DCEFonts.labelLarge())
-                                        .foregroundColor(DCEColors.primaryText)
+                                        .foregroundColor(DCEColors.gold)
                                     Text("/ \(car.pointsCost.formatted()) pts")
                                         .font(DCEFonts.caption())
                                         .foregroundColor(DCEColors.copper)
                                     Spacer()
                                     Text("Select")
                                         .font(DCEFonts.labelSmall())
-                                        .foregroundColor(.white)
+                                        .foregroundColor(DCEColors.navy)
                                         .padding(.horizontal, 14)
                                         .padding(.vertical, 6)
-                                        .background(DCEColors.navy)
+                                        .background(DCEColors.gold)
                                         .cornerRadius(14)
                                 }
                             }
@@ -381,7 +383,8 @@ struct SearchResultsView: View {
                         .padding(12)
                         .background(DCEColors.cardBackground)
                         .cornerRadius(14)
-                        .shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 2)
+                        .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+                        .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
@@ -442,10 +445,10 @@ struct SearchResultsView: View {
                                     Spacer()
                                     Text("Reserve")
                                         .font(DCEFonts.labelSmall())
-                                        .foregroundColor(.white)
+                                        .foregroundColor(DCEColors.navy)
                                         .padding(.horizontal, 14)
                                         .padding(.vertical, 6)
-                                        .background(DCEColors.navy)
+                                        .background(DCEColors.gold)
                                         .cornerRadius(14)
                                 }
                             }
@@ -453,7 +456,8 @@ struct SearchResultsView: View {
                         .padding(12)
                         .background(DCEColors.cardBackground)
                         .cornerRadius(14)
-                        .shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 2)
+                        .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+                        .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
                     }
                     .buttonStyle(.plain)
                 }
@@ -489,7 +493,8 @@ struct SearchResultsView: View {
             .frame(maxWidth: .infinity)
             .background(DCEColors.cardBackground)
             .cornerRadius(16)
-            .shadow(color: .black.opacity(0.06), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
 
             // Benefits
             VStack(alignment: .leading, spacing: 12) {
@@ -506,7 +511,8 @@ struct SearchResultsView: View {
             .padding(16)
             .background(DCEColors.cardBackground)
             .cornerRadius(16)
-            .shadow(color: .black.opacity(0.06), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
         .padding(.horizontal, 20)
     }
@@ -515,7 +521,7 @@ struct SearchResultsView: View {
         HStack(spacing: 10) {
             Image(systemName: icon)
                 .font(.system(size: 14))
-                .foregroundColor(DCEColors.navy)
+                .foregroundColor(DCEColors.gold)
                 .frame(width: 28)
             Text(text)
                 .font(DCEFonts.bodySmall())
@@ -534,9 +540,9 @@ struct SearchResultsView: View {
                     HStack(spacing: 12) {
                         Image(systemName: bookingIcon(for: booking))
                             .font(.system(size: 16))
-                            .foregroundColor(DCEColors.navy)
+                            .foregroundColor(DCEColors.gold)
                             .frame(width: 36, height: 36)
-                            .background(DCEColors.navy.opacity(0.1))
+                            .background(DCEColors.goldDim)
                             .cornerRadius(8)
 
                         VStack(alignment: .leading, spacing: 4) {
@@ -565,7 +571,8 @@ struct SearchResultsView: View {
                     .padding(14)
                     .background(DCEColors.cardBackground)
                     .cornerRadius(14)
-                    .shadow(color: .black.opacity(0.04), radius: 2, x: 0, y: 1)
+                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+                    .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 1)
                 }
             }
         }
@@ -616,10 +623,10 @@ struct SearchResultsView: View {
                             ForEach(dest.tags.prefix(2), id: \.self) { tag in
                                 Text(tag)
                                     .font(DCEFonts.caption())
-                                    .foregroundColor(DCEColors.navy)
+                                    .foregroundColor(DCEColors.gold)
                                     .padding(.horizontal, 6)
                                     .padding(.vertical, 2)
-                                    .background(DCEColors.navy.opacity(0.08))
+                                    .background(DCEColors.goldDim)
                                     .cornerRadius(4)
                             }
                         }
@@ -627,7 +634,8 @@ struct SearchResultsView: View {
                     .padding(10)
                     .background(DCEColors.cardBackground)
                     .cornerRadius(14)
-                    .shadow(color: .black.opacity(0.06), radius: 3, x: 0, y: 2)
+                    .overlay(RoundedRectangle(cornerRadius: 14).stroke(DCEColors.glassBorder, lineWidth: 1))
+                    .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
                 }
                 .buttonStyle(.plain)
             }
@@ -642,10 +650,10 @@ struct SearchResultsView: View {
             HStack {
                 Image(systemName: "bubble.left.and.bubble.right")
                     .font(.system(size: 14))
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text("Concierge Chat")
                     .font(DCEFonts.labelMedium())
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
             }
             .padding(.horizontal, 20)
             .padding(.top, 8)
@@ -663,7 +671,7 @@ struct SearchResultsView: View {
                     HStack(alignment: .top, spacing: 8) {
                         ZStack {
                             Circle()
-                                .fill(DCEColors.navy)
+                                .fill(DCEColors.gold)
                                 .frame(width: 32, height: 32)
                             Image(systemName: "sparkles")
                                 .font(.system(size: 14))

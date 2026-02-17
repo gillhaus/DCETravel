@@ -36,13 +36,14 @@ struct ContentView: View {
                     }
                 }
         }
-        .tint(DCEColors.navy)
+        .tint(DCEColors.gold)
         .sheet(item: $router.presentedSheet) { sheet in
             switch sheet {
             case .profile:
                 ProfileSheetView()
                     .environmentObject(appState)
                     .environmentObject(router)
+                    .presentationBackground(DCEColors.warmBackground)
             default:
                 EmptyView()
             }

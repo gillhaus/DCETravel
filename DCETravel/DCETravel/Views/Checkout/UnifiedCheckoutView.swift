@@ -106,7 +106,7 @@ struct UnifiedCheckoutView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "airplane")
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text("\(flight.airline) \(flight.flightNumber)")
                     .font(DCEFonts.labelLarge())
                     .foregroundColor(DCEColors.primaryText)
@@ -137,7 +137,7 @@ struct UnifiedCheckoutView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "building.2")
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text(hotel.name)
                     .font(DCEFonts.labelLarge())
                     .foregroundColor(DCEColors.primaryText)
@@ -157,10 +157,10 @@ struct UnifiedCheckoutView: View {
                 if let tier = hotel.tier {
                     Text(tier.rawValue)
                         .font(DCEFonts.caption())
-                        .foregroundColor(.white)
+                        .foregroundColor(DCEColors.navy)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
-                        .background(DCEColors.navy)
+                        .background(DCEColors.gold)
                         .cornerRadius(4)
                 }
             }
@@ -177,7 +177,7 @@ struct UnifiedCheckoutView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "car.fill")
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text("\(car.company) - \(car.model)")
                     .font(DCEFonts.labelLarge())
                     .foregroundColor(DCEColors.primaryText)
@@ -201,7 +201,7 @@ struct UnifiedCheckoutView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "fork.knife")
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text(restaurant.name)
                     .font(DCEFonts.labelLarge())
                     .foregroundColor(DCEColors.primaryText)
@@ -265,7 +265,7 @@ struct UnifiedCheckoutView: View {
             } label: {
                 HStack {
                     Image(systemName: payWithPoints ? "largecircle.fill.circle" : "circle")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Pay with Points")
                             .font(DCEFonts.labelMedium())
@@ -277,8 +277,12 @@ struct UnifiedCheckoutView: View {
                     Spacer()
                 }
                 .padding(12)
-                .background(payWithPoints ? DCEColors.navy.opacity(0.08) : DCEColors.cardBackground)
+                .background(payWithPoints ? DCEColors.goldDim : DCEColors.cardBackground)
                 .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(payWithPoints ? DCEColors.gold.opacity(0.3) : DCEColors.glassBorder, lineWidth: 1)
+                )
             }
             .buttonStyle(.plain)
 
@@ -288,7 +292,7 @@ struct UnifiedCheckoutView: View {
             } label: {
                 HStack {
                     Image(systemName: payWithPoints ? "circle" : "largecircle.fill.circle")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Pay with Card")
                             .font(DCEFonts.labelMedium())
@@ -300,8 +304,12 @@ struct UnifiedCheckoutView: View {
                     Spacer()
                 }
                 .padding(12)
-                .background(!payWithPoints ? DCEColors.navy.opacity(0.08) : DCEColors.cardBackground)
+                .background(!payWithPoints ? DCEColors.goldDim : DCEColors.cardBackground)
                 .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(!payWithPoints ? DCEColors.gold.opacity(0.3) : DCEColors.glassBorder, lineWidth: 1)
+                )
             }
             .buttonStyle(.plain)
         }
@@ -319,7 +327,7 @@ struct UnifiedCheckoutView: View {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Image(systemName: "creditcard.fill")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Victoria Chen")
                             .font(DCEFonts.labelMedium())
@@ -363,7 +371,7 @@ struct UnifiedCheckoutView: View {
                         Spacer()
                         Text(String(format: "$%.2f", total))
                             .font(DCEFonts.headlineMedium())
-                            .foregroundColor(DCEColors.primaryText)
+                            .foregroundColor(DCEColors.gold)
                     }
                 }
             }

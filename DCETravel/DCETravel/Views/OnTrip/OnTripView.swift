@@ -27,7 +27,7 @@ struct OnTripView: View {
                                 HStack(alignment: .top, spacing: 8) {
                                     ZStack {
                                         Circle()
-                                            .fill(DCEColors.navy)
+                                            .fill(DCEColors.gold)
                                             .frame(width: 32, height: 32)
                                         Image(systemName: "sparkles")
                                             .font(.system(size: 14))
@@ -72,7 +72,7 @@ struct OnTripView: View {
                     router.navigate(to: .postTrip)
                 } label: {
                     Image(systemName: "flag.checkered")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
         }

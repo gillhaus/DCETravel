@@ -18,10 +18,10 @@ struct LanderView: View {
                     HStack(spacing: 10) {
                         Image(systemName: "diamond.fill")
                             .font(.system(size: 28))
-                            .foregroundColor(DCEColors.navy)
+                            .foregroundColor(DCEColors.gold)
                         Text("Travel")
                             .font(DCEFonts.displayLarge())
-                            .foregroundColor(DCEColors.navy)
+                            .foregroundColor(DCEColors.primaryText)
                     }
                     .opacity(animateContent ? 1 : 0)
                     .offset(y: animateContent ? 0 : 20)

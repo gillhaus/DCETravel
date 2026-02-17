@@ -60,13 +60,13 @@ struct PostTripView: View {
                     router.navigate(to: .home)
                 } label: {
                     Image(systemName: "clock")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {} label: {
                     Image(systemName: "person.circle")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
         }

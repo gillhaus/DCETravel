@@ -33,11 +33,11 @@ struct ChatView: View {
                                 HStack(alignment: .top, spacing: 8) {
                                     ZStack {
                                         Circle()
-                                            .fill(DCEColors.navy)
+                                            .fill(DCEColors.gold)
                                             .frame(width: 32, height: 32)
                                         Image(systemName: "sparkles")
                                             .font(.system(size: 14))
-                                            .foregroundColor(.white)
+                                            .foregroundColor(DCEColors.navy)
                                     }
                                     TypingIndicator()
                                 }
@@ -66,10 +66,14 @@ struct ChatView: View {
                                 } label: {
                                     Text(action)
                                         .font(DCEFonts.labelSmall())
-                                        .foregroundColor(DCEColors.navy)
+                                        .foregroundColor(DCEColors.secondaryText)
                                         .padding(.horizontal, 14)
                                         .padding(.vertical, 8)
-                                        .background(DCEColors.navy.opacity(0.08))
+                                        .background(DCEColors.glass)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(DCEColors.glassBorder, lineWidth: 1)
+                                        )
                                         .cornerRadius(16)
                                 }
                             }
@@ -112,7 +116,7 @@ struct ChatView: View {
                     }
                 } label: {
                     Image(systemName: "ellipsis.circle")
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
         }
@@ -206,18 +210,22 @@ struct TripItineraryBar: View {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(trip.destination)
                             .font(DCEFonts.labelLarge())
-                            .foregroundColor(.white)
+                            .foregroundColor(DCEColors.primaryText)
                         Text(trip.dateRangeText)
                             .font(DCEFonts.caption())
-                            .foregroundColor(.white.opacity(0.8))
+                            .foregroundColor(DCEColors.secondaryText)
                     }
                     Spacer()
                     Image(systemName: "chevron.up")
-                        .foregroundColor(.white.opacity(0.8))
+                        .foregroundColor(DCEColors.secondaryText)
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 14)
-                .background(DCEColors.navy)
+                .background(DCEColors.cardBackground)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(DCEColors.gold.opacity(0.2), lineWidth: 1)
+                )
                 .cornerRadius(16)
                 .padding(.horizontal, 16)
             }

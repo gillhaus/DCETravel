@@ -89,7 +89,7 @@ struct ConciergeHighlightCard: View {
                         .font(.system(size: 16, weight: .medium))
                         .foregroundColor(accentColor)
                         .frame(width: 40, height: 40)
-                        .background(accentColor.opacity(0.1))
+                        .background(accentColor.opacity(0.15))
                         .clipShape(RoundedRectangle(cornerRadius: 12))
 
                     // Text
@@ -111,7 +111,7 @@ struct ConciergeHighlightCard: View {
                         .font(.system(size: 11, weight: .semibold))
                         .foregroundColor(DCEColors.tertiaryText)
                         .frame(width: 28, height: 28)
-                        .background(DCEColors.warmBackground)
+                        .background(DCEColors.glass)
                         .clipShape(Circle())
                 }
                 .padding(.leading, 14)
@@ -120,8 +120,12 @@ struct ConciergeHighlightCard: View {
             }
             .background(DCEColors.cardBackground)
             .clipShape(RoundedRectangle(cornerRadius: 16))
-            .shadow(color: DCEColors.navy.opacity(0.06), radius: 8, x: 0, y: 3)
-            .shadow(color: .black.opacity(0.02), radius: 2, x: 0, y: 1)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(DCEColors.glassBorder, lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 3)
+            .shadow(color: .black.opacity(0.08), radius: 2, x: 0, y: 1)
         }
         .buttonStyle(.plain)
         .padding(.horizontal, 20)

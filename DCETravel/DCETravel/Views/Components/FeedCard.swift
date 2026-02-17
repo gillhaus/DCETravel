@@ -65,10 +65,10 @@ struct FeedCard: View {
             .padding(16)
             .background(DCEColors.cardBackground)
             .cornerRadius(16)
-            .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
+            .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 2)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
-                    .strokeBorder(accentColor.opacity(0.12), lineWidth: 1)
+                    .strokeBorder(accentColor.opacity(0.15), lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
@@ -79,7 +79,7 @@ struct FeedCard: View {
     private var accentColor: Color {
         switch item.type {
         case .tripUpdate:
-            return DCEColors.navy
+            return DCEColors.gold
         case .aiSuggestion:
             return Color(hex: "8B5CF6") // purple
         case .bookingAlert:

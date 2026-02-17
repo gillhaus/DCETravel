@@ -20,7 +20,7 @@ struct TripProgressCard: View {
                 .clipped()
 
                 LinearGradient(
-                    colors: [.clear, .black.opacity(0.5)],
+                    colors: [.clear, DCEColors.navy.opacity(0.8)],
                     startPoint: .center,
                     endPoint: .bottom
                 )
@@ -51,19 +51,20 @@ struct TripProgressCard: View {
 
                 Button("Review", action: onReview)
                     .font(DCEFonts.labelMedium())
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 8)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
-                            .stroke(DCEColors.navy, lineWidth: 1)
+                            .stroke(DCEColors.gold, lineWidth: 1)
                     )
             }
             .padding(16)
         }
         .background(DCEColors.cardBackground)
         .cornerRadius(16)
-        .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
+        .overlay(RoundedRectangle(cornerRadius: 16).stroke(DCEColors.glassBorder, lineWidth: 1))
+        .shadow(color: .black.opacity(0.3), radius: 8, x: 0, y: 2)
     }
 
     private var statusColor: Color {

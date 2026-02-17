@@ -36,7 +36,11 @@ struct ChatBubble: View {
                         .cornerRadius(20)
                         .cornerRadius(isAgent ? 4 : 20, corners: isAgent ? [.topLeft] : [])
                         .cornerRadius(isAgent ? 20 : 4, corners: isAgent ? [] : [.topRight])
-                        .shadow(color: .black.opacity(0.04), radius: 2, x: 0, y: 1)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(isAgent ? DCEColors.glassBorder : DCEColors.gold.opacity(0.15), lineWidth: 1)
+                        )
+                        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
                 }
 
                 // Rich content
@@ -62,11 +66,11 @@ struct ChatBubble: View {
     private var agentAvatar: some View {
         ZStack {
             Circle()
-                .fill(DCEColors.navy)
+                .fill(DCEColors.gold)
                 .frame(width: 32, height: 32)
             Image(systemName: "sparkles")
                 .font(.system(size: 14))
-                .foregroundColor(.white)
+                .foregroundColor(DCEColors.navy)
         }
     }
 
@@ -210,7 +214,11 @@ struct FlightResultCard: View {
             .padding(12)
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.04), radius: 2, x: 0, y: 1)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(DCEColors.glassBorder, lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
     }
@@ -250,9 +258,9 @@ struct BookingRowCard: View {
         HStack(spacing: 10) {
             Image(systemName: booking.type == .flight ? "airplane" : booking.type == .hotel ? "building.2" : "fork.knife")
                 .font(.system(size: 14))
-                .foregroundColor(DCEColors.navy)
+                .foregroundColor(DCEColors.gold)
                 .frame(width: 28, height: 28)
-                .background(DCEColors.navy.opacity(0.1))
+                .background(DCEColors.gold.opacity(0.1))
                 .cornerRadius(6)
 
             VStack(alignment: .leading, spacing: 2) {
@@ -292,7 +300,7 @@ struct BookingConfirmationCard: View {
 
             Text(booking.confirmationNumber)
                 .font(DCEFonts.headlineLarge())
-                .foregroundColor(DCEColors.navy)
+                .foregroundColor(DCEColors.gold)
 
             Text(booking.details)
                 .font(DCEFonts.bodySmall())
@@ -302,8 +310,12 @@ struct BookingConfirmationCard: View {
         .padding(16)
         .frame(maxWidth: .infinity)
         .background(DCEColors.cardBackground)
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(DCEColors.glassBorder, lineWidth: 1)
+        )
         .cornerRadius(16)
-        .shadow(color: .black.opacity(0.06), radius: 4, x: 0, y: 2)
+        .shadow(color: .black.opacity(0.25), radius: 6, x: 0, y: 3)
     }
 }
 

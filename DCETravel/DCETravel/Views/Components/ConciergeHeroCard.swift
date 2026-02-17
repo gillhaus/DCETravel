@@ -34,13 +34,13 @@ struct ConciergeHeroCard: View {
                     .frame(height: 240)
                     .clipped()
 
-                    // Rich multi-stop gradient
+                    // Rich multi-stop gradient (navy-based for dark mode)
                     LinearGradient(
                         stops: [
                             .init(color: .clear, location: 0),
-                            .init(color: .black.opacity(0.05), location: 0.3),
-                            .init(color: .black.opacity(0.35), location: 0.6),
-                            .init(color: .black.opacity(0.75), location: 1.0)
+                            .init(color: DCEColors.navy.opacity(0.03), location: 0.25),
+                            .init(color: DCEColors.navy.opacity(0.45), location: 0.6),
+                            .init(color: DCEColors.navy.opacity(0.92), location: 1.0)
                         ],
                         startPoint: .top,
                         endPoint: .bottom
@@ -64,17 +64,20 @@ struct ConciergeHeroCard: View {
                         VStack(spacing: 1) {
                             Text("\(daysUntil)")
                                 .font(.system(size: 28, weight: .bold, design: .serif))
-                                .foregroundColor(.white)
+                                .foregroundColor(DCEColors.gold)
                             Text("days")
                                 .font(DCEFonts.labelSmall())
-                                .foregroundColor(.white.opacity(0.85))
+                                .foregroundColor(DCEColors.secondaryText)
                                 .textCase(.uppercase)
                         }
                         .padding(.horizontal, 16)
                         .padding(.vertical, 10)
-                        .background(.ultraThinMaterial.opacity(0.85))
-                        .background(DCEColors.copper.opacity(0.25))
+                        .background(DCEColors.navy.opacity(0.65))
                         .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(DCEColors.gold.opacity(0.2), lineWidth: 1)
+                        )
                     }
                     .padding(20)
                 }
@@ -86,7 +89,7 @@ struct ConciergeHeroCard: View {
                     HStack(spacing: 6) {
                         Image(systemName: "person.2.fill")
                             .font(.system(size: 12))
-                            .foregroundColor(DCEColors.navy.opacity(0.5))
+                            .foregroundColor(DCEColors.secondaryText)
                         Text(trip.travelers.prefix(2).joined(separator: ", "))
                             .font(DCEFonts.labelMedium())
                             .foregroundColor(DCEColors.primaryText)
@@ -103,10 +106,10 @@ struct ConciergeHeroCard: View {
                     HStack(spacing: 5) {
                         Image(systemName: bookingsCount > 0 ? "checkmark.circle.fill" : "plus.circle")
                             .font(.system(size: 13))
-                            .foregroundColor(bookingsCount > 0 ? DCEColors.success : DCEColors.copper)
+                            .foregroundColor(bookingsCount > 0 ? DCEColors.success : DCEColors.gold)
                         Text(bookingsCount > 0 ? "\(bookingsCount) booked" : "Start planning")
                             .font(DCEFonts.labelMedium())
-                            .foregroundColor(bookingsCount > 0 ? DCEColors.primaryText : DCEColors.copper)
+                            .foregroundColor(bookingsCount > 0 ? DCEColors.primaryText : DCEColors.gold)
                     }
                 }
                 .padding(.horizontal, 20)
@@ -114,8 +117,12 @@ struct ConciergeHeroCard: View {
                 .background(DCEColors.cardBackground)
             }
             .clipShape(RoundedRectangle(cornerRadius: 20))
-            .shadow(color: DCEColors.navy.opacity(0.08), radius: 16, x: 0, y: 6)
-            .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(DCEColors.glassBorder, lineWidth: 1)
+            )
+            .shadow(color: .black.opacity(0.4), radius: 16, x: 0, y: 6)
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .padding(.horizontal, 20)

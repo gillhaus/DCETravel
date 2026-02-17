@@ -32,7 +32,7 @@ struct DestinationCard: View {
                 .clipped()
 
                 LinearGradient(
-                    colors: [.clear, .black.opacity(0.7)],
+                    colors: [.clear, DCEColors.navy.opacity(0.85)],
                     startPoint: .center,
                     endPoint: .bottom
                 )
@@ -57,6 +57,7 @@ struct DestinationCard: View {
             }
             .frame(width: width, height: height)
             .cornerRadius(16)
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(DCEColors.glassBorder, lineWidth: 1))
         }
         .buttonStyle(.plain)
     }

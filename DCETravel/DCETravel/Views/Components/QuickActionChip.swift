@@ -15,9 +15,13 @@ struct QuickActionChip: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 10)
-            .background(DCEColors.warmBackground)
-            .foregroundColor(DCEColors.primaryText)
+            .background(DCEColors.glass)
+            .foregroundColor(DCEColors.gold)
             .cornerRadius(20)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(DCEColors.glassBorder, lineWidth: 1)
+            )
         }
     }
 }

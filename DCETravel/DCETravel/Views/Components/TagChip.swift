@@ -20,14 +20,14 @@ struct TagChip: View {
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(borderColor, lineWidth: style == .outline ? 1 : 0)
+                    .stroke(borderColor, lineWidth: style == .highlighted ? 0 : 1)
             )
     }
 
     private var backgroundColor: Color {
         switch style {
-        case .default: return DCEColors.warmBackground
-        case .highlighted: return DCEColors.navy.opacity(0.1)
+        case .default: return DCEColors.glass
+        case .highlighted: return DCEColors.goldDim
         case .outline: return .clear
         }
     }
@@ -35,15 +35,16 @@ struct TagChip: View {
     private var foregroundColor: Color {
         switch style {
         case .default: return DCEColors.secondaryText
-        case .highlighted: return DCEColors.navy
+        case .highlighted: return DCEColors.gold
         case .outline: return DCEColors.secondaryText
         }
     }
 
     private var borderColor: Color {
         switch style {
-        case .outline: return DCEColors.divider
-        default: return .clear
+        case .outline: return DCEColors.glassBorder
+        case .default: return DCEColors.glassBorder
+        case .highlighted: return .clear
         }
     }
 }

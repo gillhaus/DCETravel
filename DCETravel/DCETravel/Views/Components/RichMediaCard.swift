@@ -57,7 +57,7 @@ struct MiniHotelCard: View {
                     HStack {
                         Text("$\(Int(hotel.totalPrice))")
                             .font(DCEFonts.labelLarge())
-                            .foregroundColor(DCEColors.primaryText)
+                            .foregroundColor(DCEColors.gold)
                         Text("/")
                             .foregroundColor(DCEColors.tertiaryText)
                         Text("\(hotel.pointsCost.formatted()) pts")
@@ -69,7 +69,8 @@ struct MiniHotelCard: View {
             }
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .frame(maxWidth: 260)
@@ -127,7 +128,8 @@ struct MiniRestaurantCard: View {
             }
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .frame(maxWidth: 280)
@@ -142,11 +144,11 @@ struct LoungeMiniCard: View {
             VStack(alignment: .leading, spacing: 0) {
                 ZStack {
                     Rectangle()
-                        .fill(DCEColors.navy.opacity(0.1))
+                        .fill(DCEColors.cardBackgroundElevated)
                         .frame(height: 100)
                     Image(systemName: "airplane.departure")
                         .font(.system(size: 32))
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
 
                 VStack(alignment: .leading, spacing: 6) {
@@ -165,7 +167,8 @@ struct LoungeMiniCard: View {
             }
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.3), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .frame(maxWidth: 240)

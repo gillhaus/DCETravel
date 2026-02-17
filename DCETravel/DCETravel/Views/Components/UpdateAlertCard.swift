@@ -34,7 +34,8 @@ struct UpdateAlertCard: View {
             .padding(16)
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 1)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.25), radius: 4, x: 0, y: 1)
         }
         .buttonStyle(.plain)
     }
@@ -43,7 +44,7 @@ struct UpdateAlertCard: View {
         switch alert.type {
         case .urgent: return DCEColors.error
         case .warning: return DCEColors.warning
-        case .info: return DCEColors.navy
+        case .info: return DCEColors.gold
         }
     }
 
@@ -51,7 +52,7 @@ struct UpdateAlertCard: View {
         switch alert.type {
         case .urgent: return DCEColors.error
         case .warning: return DCEColors.warning
-        case .info: return DCEColors.navy
+        case .info: return DCEColors.gold
         }
     }
 }

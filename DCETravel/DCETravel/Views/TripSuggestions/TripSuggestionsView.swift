@@ -14,7 +14,7 @@ struct TripSuggestionsView: View {
                 if viewModel.isLoading && viewModel.flights.isEmpty {
                     Spacer()
                     ProgressView()
-                        .tint(DCEColors.navy)
+                        .tint(DCEColors.gold)
                     Spacer()
                 } else {
                     ScrollView(showsIndicators: false) {
@@ -98,13 +98,13 @@ struct TripSuggestionsView: View {
                             .font(DCEFonts.labelMedium())
                             .foregroundColor(
                                 viewModel.selectedDestination?.id == destination.id
-                                    ? .white : DCEColors.navy
+                                    ? DCEColors.navy : DCEColors.gold
                             )
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
                             .background(
                                 viewModel.selectedDestination?.id == destination.id
-                                    ? DCEColors.navy : DCEColors.navy.opacity(0.08)
+                                    ? DCEColors.gold : DCEColors.goldDim
                             )
                             .cornerRadius(20)
                     }
@@ -126,7 +126,7 @@ struct TripSuggestionsView: View {
             HStack(spacing: 8) {
                 Image(systemName: icon)
                     .font(.system(size: 16))
-                    .foregroundColor(DCEColors.navy)
+                    .foregroundColor(DCEColors.gold)
                 Text(title)
                     .font(DCEFonts.headlineMedium())
                     .foregroundColor(DCEColors.primaryText)
@@ -227,7 +227,7 @@ struct MiniFlightCard: View {
                 HStack(spacing: 4) {
                     Image(systemName: "airplane")
                         .font(.system(size: 12))
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                     Text(flight.airline)
                         .font(DCEFonts.labelMedium())
                         .foregroundColor(DCEColors.secondaryText)
@@ -256,7 +256,7 @@ struct MiniFlightCard: View {
                 HStack {
                     Text("$\(Int(flight.price))")
                         .font(DCEFonts.labelLarge())
-                        .foregroundColor(DCEColors.primaryText)
+                        .foregroundColor(DCEColors.gold)
                     Spacer()
                     Text("\(flight.pointsCost.formatted()) pts")
                         .font(DCEFonts.labelMedium())
@@ -266,7 +266,8 @@ struct MiniFlightCard: View {
             .padding(12)
             .background(DCEColors.cardBackground)
             .cornerRadius(12)
-            .shadow(color: .black.opacity(0.08), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 12).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
         .frame(width: 220)

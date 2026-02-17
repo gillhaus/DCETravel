@@ -104,11 +104,11 @@ struct ActionTile: View {
             VStack(spacing: 14) {
                 ZStack {
                     Circle()
-                        .fill(DCEColors.navy.opacity(0.08))
+                        .fill(DCEColors.goldDim)
                         .frame(width: 56, height: 56)
                     Image(systemName: icon)
                         .font(.system(size: 24))
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
 
                 Text(title)
@@ -120,7 +120,8 @@ struct ActionTile: View {
             .padding(.vertical, 24)
             .background(DCEColors.cardBackground)
             .cornerRadius(16)
-            .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 2)
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(DCEColors.glassBorder, lineWidth: 1))
+            .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
         }
         .buttonStyle(.plain)
     }

@@ -13,11 +13,17 @@ struct ProfileSheetView: View {
                     // Avatar circle
                     ZStack {
                         Circle()
-                            .fill(DCEColors.navy)
+                            .fill(
+                                LinearGradient(
+                                    colors: [DCEColors.gold, DCEColors.copper],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
                             .frame(width: 72, height: 72)
                         Text(initials)
                             .font(.system(size: 26, weight: .bold, design: .serif))
-                            .foregroundColor(.white)
+                            .foregroundColor(DCEColors.navy)
                     }
 
                     Text(appState.currentUser.fullName)
@@ -28,14 +34,14 @@ struct ProfileSheetView: View {
                     HStack(spacing: 6) {
                         Image(systemName: "shield.checkered")
                             .font(.system(size: 13))
-                            .foregroundColor(DCEColors.copper)
+                            .foregroundColor(DCEColors.gold)
                         Text(appState.currentUser.membershipTier.rawValue)
                             .font(DCEFonts.labelMedium())
-                            .foregroundColor(DCEColors.copper)
+                            .foregroundColor(DCEColors.gold)
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 6)
-                    .background(DCEColors.copper.opacity(0.1))
+                    .background(DCEColors.goldDim)
                     .clipShape(Capsule())
 
                     // Points
@@ -45,19 +51,21 @@ struct ProfileSheetView: View {
                 }
                 .padding(.top, 8)
 
-                Divider()
+                Rectangle()
+                    .fill(DCEColors.divider)
+                    .frame(height: 1)
                     .padding(.horizontal, 20)
 
                 // Menu rows
                 VStack(spacing: 0) {
-                    menuRow(icon: "airplane.circle.fill", title: "My Trips", color: DCEColors.navy) {
+                    menuRow(icon: "airplane.circle.fill", title: "My Trips", color: DCEColors.gold) {
                         dismiss()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                             router.navigate(to: .tripSuggestions)
                         }
                     }
 
-                    menuRow(icon: "list.clipboard.fill", title: "My Bookings", color: DCEColors.navy) {
+                    menuRow(icon: "list.clipboard.fill", title: "My Bookings", color: DCEColors.gold) {
                         dismiss()
                         if let trip = appState.activeTrips.first {
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -81,6 +89,13 @@ struct ProfileSheetView: View {
                     menuRow(icon: "questionmark.circle.fill", title: "Help", color: DCEColors.secondaryText) { }
                         .opacity(0.5)
                 }
+                .background(DCEColors.cardBackground)
+                .cornerRadius(16)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(DCEColors.glassBorder, lineWidth: 1)
+                )
+                .padding(.horizontal, 16)
 
                 Spacer()
             }
@@ -91,7 +106,7 @@ struct ProfileSheetView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") { dismiss() }
                         .font(DCEFonts.labelLarge())
-                        .foregroundColor(DCEColors.navy)
+                        .foregroundColor(DCEColors.gold)
                 }
             }
         }

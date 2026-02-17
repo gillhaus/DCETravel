@@ -112,6 +112,25 @@ enum AppRoute {
 - Agent tools return JSON strings; rich content is built from tool results
 - Navigation from LLM uses `pendingNavigation` pattern (set intent → view observes → navigates after 1s delay)
 
+### Design System — Luxury Dark Mode
+
+The app uses a dark luxury aesthetic: deep navy backgrounds, gold/copper accents, glass-morphism cards, editorial serif + sans-serif typography.
+
+**Color palette** (defined in `DCEColors.swift`):
+- Backgrounds: `navy` (#0A1628), `cardBackground` (#14243D), `cardBackgroundElevated` (#1A2B4A)
+- Accents: `gold` (#C9A96E), `goldLight` (#D4B87A), `goldDim` (gold @ 15%), `copper` (#C26A2F)
+- Glass-morphism: `glass` (white @ 4%), `glassBorder` (white @ 8%)
+- Text: `primaryText` (#F0EDE8), `secondaryText` (#8B9BB4), `tertiaryText` (#5A6A82)
+- Status: `success` (#3DD68C), `warning` (#F5A623), `error` (#E85454)
+
+**Key patterns:**
+- Cards use `cardBackground` with `glassBorder` stroke overlay and dark shadows (`.black.opacity(0.2+)`)
+- Primary buttons use gold-to-copper gradient with navy text
+- Icons/accents use `gold` (not `navy` — navy is the background)
+- Chat: agent bubbles in `agentBubble` (#14243D), user bubbles with gold tint
+- Image overlays use navy-based gradients (not black)
+- Design mockups: `mockup/home-dark.html`, `mockup/chat-dark.html`
+
 ## Vapor API Server (DCETravelAPI/)
 
 ### Run Locally
