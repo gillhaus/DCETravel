@@ -23,4 +23,23 @@ class MockFlightService: FlightServiceProtocol {
         try? await Task.sleep(nanoseconds: UInt64.random(in: 300_000_000...800_000_000))
         return MockData.flights[0]
     }
+
+    func getLiveFlightStatus(flightId: UUID) async -> FlightStatusInfo? {
+        try? await Task.sleep(nanoseconds: UInt64.random(in: 300_000_000...800_000_000))
+        let flight = MockData.flights[0]
+        return FlightStatusInfo(
+            flightNumber: flight.flightNumber,
+            airline: flight.airline,
+            departureAirport: flight.departureAirport,
+            arrivalAirport: flight.arrivalAirport,
+            status: flight.status,
+            departureTime: flight.departureTime,
+            arrivalTime: flight.arrivalTime,
+            gate: flight.gate,
+            terminal: flight.terminal,
+            baggageClaim: flight.baggageClaim,
+            delayMinutes: nil,
+            progressPercent: nil
+        )
+    }
 }

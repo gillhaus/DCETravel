@@ -64,6 +64,7 @@ To get an Anthropic API key: https://console.anthropic.com/settings/keys
 - **Remote API** — when `API_BASE_URL` is set, connects to Railway/Vapor server instead
 - **AI Chat** — Claude tool-use with 18 tools (search, book, navigate), or local intent-based agent as fallback
 - **Social Feed** — dynamic home page with trip countdowns, booking alerts, AI suggestions, price alerts
+- **Flight Status** — Flighty-style live flight status card on Home screen with simulated real-time progression
 - **LLM Navigation** — Claude can navigate users between screens via `pendingNavigation` pattern
 
 ### Key Files
@@ -73,18 +74,19 @@ To get an Anthropic API key: https://console.anthropic.com/settings/keys
 | `DCETravelApp.swift` | App entry — checks `API_BASE_URL`, starts LocalServer or connects remote |
 | `AppState.swift` | Observable state: user, trips, bookings, chat messages per trip |
 | `ServiceContainer.swift` | DI container — `.mock` or `.local(APIClient)` mode |
-| `DataStore.swift` | In-memory seed data (24 flights, 22 hotels, 18 restaurants, 16 cars, 13 destinations) |
+| `DataStore.swift` | In-memory seed data with dynamic flight times relative to Date() |
 | `LLMChatService.swift` | Claude API integration — 18 tools, tool-use loop, rich content building |
 | `ClaudeToolSchemas.swift` | Tool definitions (search, book, navigate, points, trips) |
 | `NavigationBridge.swift` | LLM-to-UI navigation bridge (pendingNavigation → router) |
 | `AgentChatService.swift` | Fallback agent — intent parsing without LLM |
-| `HomeViewModel.swift` | Home page data: upcoming trip, countdown, bookings, AI suggestion, points |
+| `HomeViewModel.swift` | Home page data: upcoming trip, countdown, bookings, AI suggestion, points, flight status |
+| `FlightStatusCard.swift` | Flighty-style flight status card with live progress, gate, terminal |
 | `FeedViewModel.swift` | Social feed generation (countdowns, bookings, suggestions, weather, prices) |
 | `ConciergeHeroCard.swift` | Hero trip card with AsyncImage, gradient overlay, countdown |
 | `ConciergeHighlightCard.swift` | Highlight card with 3 variants: booking, AI suggestion, points |
 | `ProfileSheetView.swift` | Profile modal sheet with user info, tier, menu navigation |
 | `FeedCard.swift` | Feed card component with 7 card types and accent colors |
-| `HomeView.swift` | Concierge home: chat CTA, hero card, quick actions, highlights, inspiration |
+| `HomeView.swift` | Concierge home: chat CTA, hero card, flight status, quick actions, highlights, inspiration |
 | `ChatView.swift` | Chat UI with rich content, typing indicator, suggested actions, navigation |
 | `ChatViewModel.swift` | Chat state, message persistence, navigation intent mapping |
 | `ContentView.swift` | Root navigation — LanderView → HomeView flow |
@@ -160,7 +162,7 @@ All routes prefixed with `/api/v1/`:
 | Health | GET | `/health` | Server health check |
 | Flights | POST | `/flights/search` | Search (origin, destination, cabin, price) |
 | Flights | GET | `/flights/:id` | Get flight details |
-| Flights | GET | `/flights/:id/status` | Flight status |
+| Flights | GET | `/flights/:id/status` | Live flight status (simulated: gate, terminal, delay, progress) |
 | Flights | POST | `/flights/:id/book` | Book flight |
 | Hotels | POST | `/hotels/search` | Search (destination, price, rating, tier) |
 | Hotels | GET | `/hotels/:id` | Get hotel details |
@@ -254,7 +256,20 @@ healthcheckPath = "/api/v1/health"
 - **Remote (Railway)**: Set `API_BASE_URL=https://travel-production-d172.up.railway.app` in scheme
 - **Local (embedded server)**: Remove or disable `API_BASE_URL` — app starts its own NWListener server
 
+### Personal Phone Deployment
+
+To run on a personal iPhone:
+1. Set `DEVELOPMENT_TEAM` to your Apple ID team ID in the Xcode project (Signing & Capabilities)
+2. Change the bundle identifier to something unique (e.g., `com.yourname.DCETravel`)
+3. Ensure `API_BASE_URL` points to the Railway deployment (already configured in scheme)
+4. Connect your iPhone, select it as the destination, and build/run
+
 ## Seed Data Summary
+
+Flight times are **dynamic** — computed relative to `Date()` at app launch so the demo always feels live:
+- **UA 412** (LAX→FCO): departs in ~6h — the Flighty card target
+- **DL 178** (LAX→FCO): departed ~3h ago — in-flight example
+- **AZ 621** (LAX→FCO): landed ~1h ago — recent arrival
 
 | Category | Count | Examples |
 |----------|-------|---------|
@@ -263,7 +278,7 @@ healthcheckPath = "/api/v1/health"
 | Restaurants | 18 | Armando Al Pantheon, Sukiyabashi Jiro, Le Cinq... |
 | Car Rentals | 16 | Hertz, Avis, Enterprise, Sixt across 6 cities |
 | Destinations | 13 | Rome, Tokyo, Paris, Bali, Reykjavik, NYC, Cancun... |
-| Trips | 4 | Rome (booked), Tokyo (planning), Mexico City (completed), Paris (planning) |
+| Trips | 4 | Rome (+5d), Tokyo (+30d), Mexico City (-60d), Paris (+50d) |
 | Bookings | 8 | Flights, hotels, restaurants across trips |
 | Themes | 3 | Roman history, Luxury shopping, Local hidden gems |
 

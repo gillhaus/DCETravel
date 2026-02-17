@@ -11,6 +11,8 @@ class HomeViewModel: ObservableObject {
     @Published var pointsValue: Double = 0
     @Published var membershipTier: User.MembershipTier = .sapphire
     @Published var inspirationDestinations: [Destination] = []
+    @Published var bookedFlight: Flight?
+    @Published var flightStatusInfo: FlightStatusInfo?
 
     func loadData(appState: AppState) async {
         let now = Date()
@@ -42,6 +44,13 @@ class HomeViewModel: ObservableObject {
 
             // AI suggestion based on destination
             aiSuggestion = generateAISuggestion(for: trip)
+
+            // Flight status for Flighty card
+            let flightBooking = tripBookings.first(where: { $0.type == .flight })
+            if let sourceId = flightBooking?.sourceId {
+                bookedFlight = await appState.services.flights.getFlightStatus(flightId: sourceId)
+                flightStatusInfo = await appState.services.flights.getLiveFlightStatus(flightId: sourceId)
+            }
         }
 
         // Points

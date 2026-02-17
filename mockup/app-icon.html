@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; }
+  body {
+    width: 1024px;
+    height: 1024px;
+    overflow: hidden;
+    background: #0A1628;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon {
+    width: 1024px;
+    height: 1024px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  svg {
+    width: 560px;
+    height: 560px;
+  }
+</style>
+</head>
+<body>
+<div class="icon">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#D4B87A"/>
+        <stop offset="50%" stop-color="#C9A96E"/>
+        <stop offset="100%" stop-color="#C26A2F"/>
+      </linearGradient>
+      <linearGradient id="goldGradLine" x1="50%" y1="0%" x2="50%" y2="100%">
+        <stop offset="0%" stop-color="#D4B87A" stop-opacity="0.9"/>
+        <stop offset="50%" stop-color="#C9A96E" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="#C26A2F" stop-opacity="0.9"/>
+      </linearGradient>
+    </defs>
+    <!-- Diamond (rotated square) -->
+    <rect x="22" y="22" width="56" height="56" rx="4" ry="4"
+          transform="rotate(45 50 50)"
+          fill="url(#goldGrad)"
+          stroke="none"/>
+    <!-- Compass vertical line -->
+    <line x1="50" y1="12" x2="50" y2="88"
+          stroke="url(#goldGradLine)" stroke-width="1.8" stroke-linecap="round"/>
+    <!-- Small diamond accent at top of compass -->
+    <polygon points="50,10 53,14 50,18 47,14"
+             fill="#D4B87A" opacity="0.85"/>
+    <!-- Small diamond accent at bottom of compass -->
+    <polygon points="50,82 53,86 50,90 47,86"
+             fill="#C26A2F" opacity="0.85"/>
+  </svg>
+</div>
+</body>
+</html>

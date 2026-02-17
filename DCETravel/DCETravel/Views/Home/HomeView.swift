@@ -31,6 +31,21 @@ struct HomeView: View {
                         .offset(y: appeared ? 0 : 16)
                     }
 
+                    // Flight status card
+                    if let flight = viewModel.bookedFlight {
+                        FlightStatusCard(
+                            flight: flight,
+                            statusInfo: viewModel.flightStatusInfo
+                        ) {
+                            if let trip = viewModel.upcomingTrip {
+                                router.navigate(to: .chat(tripId: trip.id))
+                            }
+                        }
+                        .padding(.horizontal, 20)
+                        .opacity(appeared ? 1 : 0)
+                        .offset(y: appeared ? 0 : 14)
+                    }
+
                     // Quick actions
                     quickActionsRow
                         .opacity(appeared ? 1 : 0)

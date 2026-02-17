@@ -42,9 +42,9 @@ class DataStore {
         itineraryThemes = []
 
         seedDestinations()
+        seedFlights()              // flights needed for booking sourceId
         seedTripsAndBookings()
         seedHotels()
-        seedFlights()
         seedRestaurants()
         seedCarRentals()
         seedItineraryThemes()
@@ -122,41 +122,48 @@ class DataStore {
         ]
     }
 
-    // MARK: - Seed Trips & Bookings (4 trips, 8 bookings)
+    // MARK: - Seed Trips & Bookings (4 trips, 8 bookings) — relative to now
 
     private func seedTripsAndBookings() {
+        let now = Date()
+        let day: TimeInterval = 86400
+
         let tripRome = UUID()
         let tripTokyo = UUID()
         let tripMexico = UUID()
         let tripParis = UUID()
 
+        // Find UA 412 and NH 105 flight IDs for booking linkage
+        let ua412Id = flights.first(where: { $0.flightNumber == "UA 412" })?.id
+        let nh105Id = flights.first(where: { $0.flightNumber == "NH 105" })?.id
+
         trips = [
             Trip(id: tripRome, name: "Girl's trip to Rome", destination: "Rome",
                  destinationCountry: "Italy",
                  imageURL: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800",
-                 startDate: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23))!,
-                 endDate: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 29))!,
+                 startDate: now.addingTimeInterval(5 * day),
+                 endDate: now.addingTimeInterval(11 * day),
                  travelers: ["Victoria", "Jaclyn", "Daphne", "Harper"],
                  status: .booked, itinerary: nil, bookings: []),
             Trip(id: tripTokyo, name: "Tokyo Adventure", destination: "Tokyo",
                  destinationCountry: "Japan",
                  imageURL: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
-                 startDate: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15))!,
-                 endDate: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 25))!,
+                 startDate: now.addingTimeInterval(30 * day),
+                 endDate: now.addingTimeInterval(40 * day),
                  travelers: ["Victoria", "Marcus"],
                  status: .planning, itinerary: nil, bookings: []),
             Trip(id: tripMexico, name: "Mexico City Weekend", destination: "Mexico City",
                  destinationCountry: "Mexico",
                  imageURL: "https://images.unsplash.com/photo-1518659526054-e4baac39d57d?w=800",
-                 startDate: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 10))!,
-                 endDate: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 14))!,
+                 startDate: now.addingTimeInterval(-60 * day),
+                 endDate: now.addingTimeInterval(-56 * day),
                  travelers: ["Victoria", "Jaclyn", "Daphne"],
                  status: .completed, itinerary: nil, bookings: []),
             Trip(id: tripParis, name: "Paris in Spring", destination: "Paris",
                  destinationCountry: "France",
                  imageURL: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
-                 startDate: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 5))!,
-                 endDate: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 12))!,
+                 startDate: now.addingTimeInterval(50 * day),
+                 endDate: now.addingTimeInterval(57 * day),
                  travelers: ["Victoria"],
                  status: .planning, itinerary: nil, bookings: [])
         ]
@@ -166,48 +173,53 @@ class DataStore {
             Booking(id: UUID(), type: .hotel, status: .confirmed,
                    confirmationNumber: "HT847291", tripId: tripRome,
                    details: "Portrait Roma - 5 night stay",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23))!,
-                   price: 28255, checkInDate: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23)),
-                   checkOutDate: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 28))),
+                   date: now.addingTimeInterval(5 * day),
+                   price: 28255,
+                   checkInDate: now.addingTimeInterval(5 * day),
+                   checkOutDate: now.addingTimeInterval(10 * day)),
             Booking(id: UUID(), type: .flight, status: .confirmed,
                    confirmationNumber: "FL293847", tripId: tripRome,
                    details: "United UA 412 - LAX to FCO",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23))!,
+                   date: now.addingTimeInterval(5 * day),
+                   sourceId: ua412Id,
                    price: 2850, passengers: ["Victoria", "Jaclyn", "Daphne", "Harper"]),
             Booking(id: UUID(), type: .restaurant, status: .confirmed,
                    confirmationNumber: "RS182736", tripId: tripRome,
                    details: "Armando Al Pantheon - 4 guests",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 25))!,
+                   date: now.addingTimeInterval(7 * day),
                    guestCount: 4),
             Booking(id: UUID(), type: .carRental, status: .confirmed,
                    confirmationNumber: "CR459182", tripId: tripRome,
                    details: "Hertz Toyota Corolla - Rome Fiumicino",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 24))!,
+                   date: now.addingTimeInterval(6 * day),
                    price: 270),
             // Mexico City completed bookings
             Booking(id: UUID(), type: .flight, status: .completed,
                    confirmationNumber: "FL738291", tripId: tripMexico,
                    details: "American AA 1290 - LAX to MEX",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 10))!,
+                   date: now.addingTimeInterval(-60 * day),
                    price: 680, passengers: ["Victoria", "Jaclyn", "Daphne"]),
             Booking(id: UUID(), type: .hotel, status: .completed,
                    confirmationNumber: "HT628194", tripId: tripMexico,
                    details: "Four Seasons Mexico City - 4 nights",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 10))!,
-                   price: 12800, checkInDate: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 10)),
-                   checkOutDate: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 14))),
+                   date: now.addingTimeInterval(-60 * day),
+                   price: 12800,
+                   checkInDate: now.addingTimeInterval(-60 * day),
+                   checkOutDate: now.addingTimeInterval(-56 * day)),
             // Tokyo trip bookings
             Booking(id: UUID(), type: .flight, status: .confirmed,
                    confirmationNumber: "FL982736", tripId: tripTokyo,
                    details: "ANA NH 105 - LAX to NRT",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15))!,
+                   date: now.addingTimeInterval(30 * day),
+                   sourceId: nh105Id,
                    price: 3200, passengers: ["Victoria", "Marcus"]),
             Booking(id: UUID(), type: .hotel, status: .pending,
                    confirmationNumber: "HT019283", tripId: tripTokyo,
                    details: "Park Hyatt Tokyo - 10 nights",
-                   date: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15))!,
-                   price: 48000, checkInDate: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15)),
-                   checkOutDate: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 25)))
+                   date: now.addingTimeInterval(30 * day),
+                   price: 48000,
+                   checkInDate: now.addingTimeInterval(30 * day),
+                   checkOutDate: now.addingTimeInterval(40 * day))
         ]
     }
 
@@ -426,135 +438,132 @@ class DataStore {
         ]
     }
 
-    // MARK: - Seed Flights (24)
+    // MARK: - Seed Flights (24) — relative to now so demo always feels live
 
     private func seedFlights() {
+        let now = Date()
+        func d(_ h: Double) -> Date { now.addingTimeInterval(h * 3600) }
+        func gateFor(_ fn: String) -> (String, String) {
+            let h = abs(fn.hashValue)
+            return ("\((h % 60) + 1)\(["A","B","C"][h % 3])", "Terminal \((h % 8) + 1)")
+        }
+
         flights = [
-            // LAX -> Rome (FCO)
+            // LAX → Rome (FCO)
             Flight(id: UUID(), airline: "United Airlines", flightNumber: "UA 412",
                    departureAirport: "LAX", arrivalAirport: "FCO",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23, hour: 17, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 24, hour: 13, minute: 45))!,
-                   price: 2850, pointsCost: 85000, cabinClass: .business, status: .scheduled),
+                   departureTime: d(6), arrivalTime: d(18.25),
+                   price: 2850, pointsCost: 85000, cabinClass: .business, status: .scheduled,
+                   gate: gateFor("UA 412").0, terminal: gateFor("UA 412").1),
             Flight(id: UUID(), airline: "Delta Air Lines", flightNumber: "DL 178",
                    departureAirport: "LAX", arrivalAirport: "FCO",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23, hour: 21, minute: 15))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 24, hour: 17, minute: 30))!,
-                   price: 2450, pointsCost: 72000, cabinClass: .business, status: .scheduled),
+                   departureTime: d(-3), arrivalTime: d(9.5),
+                   price: 2450, pointsCost: 72000, cabinClass: .business, status: .inFlight,
+                   gate: gateFor("DL 178").0, terminal: gateFor("DL 178").1),
             Flight(id: UUID(), airline: "ITA Airways", flightNumber: "AZ 621",
                    departureAirport: "LAX", arrivalAirport: "FCO",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23, hour: 14, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 24, hour: 10, minute: 30))!,
-                   price: 980, pointsCost: 42000, cabinClass: .economy, status: .scheduled),
+                   departureTime: d(-13.5), arrivalTime: d(-1),
+                   price: 980, pointsCost: 42000, cabinClass: .economy, status: .landed,
+                   gate: gateFor("AZ 621").0, terminal: gateFor("AZ 621").1, baggageClaim: "Carousel 7"),
             Flight(id: UUID(), airline: "Emirates", flightNumber: "EK 216",
                    departureAirport: "LAX", arrivalAirport: "FCO",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 23, hour: 16, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 24, hour: 18, minute: 30))!,
+                   departureTime: d(26), arrivalTime: d(38.5),
                    price: 8500, pointsCost: 180000, cabinClass: .first, status: .scheduled),
-            // LAX -> Tokyo (NRT)
+
+            // LAX → Tokyo (NRT)
             Flight(id: UUID(), airline: "ANA", flightNumber: "NH 105",
                    departureAirport: "LAX", arrivalAirport: "NRT",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15, hour: 11, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 16, hour: 15, minute: 30))!,
+                   departureTime: d(14), arrivalTime: d(25.5),
                    price: 3200, pointsCost: 95000, cabinClass: .business, status: .scheduled),
             Flight(id: UUID(), airline: "Japan Airlines", flightNumber: "JL 15",
                    departureAirport: "LAX", arrivalAirport: "NRT",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15, hour: 13, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 16, hour: 17, minute: 0))!,
+                   departureTime: d(16.5), arrivalTime: d(28),
                    price: 1100, pointsCost: 48000, cabinClass: .economy, status: .scheduled),
             Flight(id: UUID(), airline: "Singapore Airlines", flightNumber: "SQ 11",
                    departureAirport: "LAX", arrivalAirport: "NRT",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15, hour: 0, minute: 5))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 16, hour: 6, minute: 30))!,
-                   price: 5800, pointsCost: 140000, cabinClass: .first, status: .scheduled),
+                   departureTime: d(3), arrivalTime: d(14.4),
+                   price: 5800, pointsCost: 140000, cabinClass: .first, status: .scheduled,
+                   gate: gateFor("SQ 11").0, terminal: gateFor("SQ 11").1),
             Flight(id: UUID(), airline: "United Airlines", flightNumber: "UA 32",
                    departureAirport: "LAX", arrivalAirport: "NRT",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 15, hour: 10, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 16, hour: 14, minute: 45))!,
+                   departureTime: d(13.5), arrivalTime: d(24.75),
                    price: 850, pointsCost: 38000, cabinClass: .economy, status: .scheduled),
-            // LAX -> Paris (CDG)
+
+            // LAX → Paris (CDG)
             Flight(id: UUID(), airline: "Air France", flightNumber: "AF 65",
                    departureAirport: "LAX", arrivalAirport: "CDG",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 5, hour: 16, minute: 45))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 6, hour: 12, minute: 15))!,
+                   departureTime: d(20), arrivalTime: d(31.5),
                    price: 2650, pointsCost: 78000, cabinClass: .business, status: .scheduled),
             Flight(id: UUID(), airline: "Delta Air Lines", flightNumber: "DL 264",
                    departureAirport: "LAX", arrivalAirport: "CDG",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 5, hour: 20, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 6, hour: 15, minute: 45))!,
+                   departureTime: d(23), arrivalTime: d(34.75),
                    price: 780, pointsCost: 35000, cabinClass: .economy, status: .scheduled),
             Flight(id: UUID(), airline: "Lufthansa", flightNumber: "LH 453",
                    departureAirport: "LAX", arrivalAirport: "CDG",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 5, hour: 15, minute: 20))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2026, month: 4, day: 6, hour: 13, minute: 0))!,
+                   departureTime: d(18.3), arrivalTime: d(30),
                    price: 3100, pointsCost: 88000, cabinClass: .business, status: .scheduled),
-            // JFK -> London (LHR)
+
+            // JFK → London (LHR)
             Flight(id: UUID(), airline: "British Airways", flightNumber: "BA 178",
                    departureAirport: "JFK", arrivalAirport: "LHR",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 1, hour: 19, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 2, hour: 7, minute: 15))!,
+                   departureTime: d(10), arrivalTime: d(17.5),
                    price: 4200, pointsCost: 110000, cabinClass: .business, status: .scheduled),
             Flight(id: UUID(), airline: "American Airlines", flightNumber: "AA 100",
                    departureAirport: "JFK", arrivalAirport: "LHR",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 1, hour: 22, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 7, day: 2, hour: 10, minute: 45))!,
+                   departureTime: d(8), arrivalTime: d(15.7),
                    price: 680, pointsCost: 32000, cabinClass: .economy, status: .scheduled),
-            // SFO -> Barcelona (BCN)
+
+            // SFO → Barcelona (BCN)
             Flight(id: UUID(), airline: "United Airlines", flightNumber: "UA 94",
                    departureAirport: "SFO", arrivalAirport: "BCN",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 6, day: 10, hour: 17, minute: 15))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 6, day: 11, hour: 13, minute: 0))!,
+                   departureTime: d(30), arrivalTime: d(42),
                    price: 2200, pointsCost: 65000, cabinClass: .business, status: .scheduled),
             Flight(id: UUID(), airline: "Iberia", flightNumber: "IB 2624",
                    departureAirport: "SFO", arrivalAirport: "BCN",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 6, day: 10, hour: 21, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 6, day: 11, hour: 17, minute: 45))!,
+                   departureTime: d(28), arrivalTime: d(39),
                    price: 620, pointsCost: 28000, cabinClass: .economy, status: .scheduled),
-            // ORD -> Cancun (CUN)
+
+            // ORD → Cancun (CUN)
             Flight(id: UUID(), airline: "American Airlines", flightNumber: "AA 1844",
                    departureAirport: "ORD", arrivalAirport: "CUN",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 10, hour: 8, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 10, hour: 13, minute: 15))!,
+                   departureTime: d(22), arrivalTime: d(26.5),
                    price: 450, pointsCost: 18000, cabinClass: .economy, status: .scheduled),
             Flight(id: UUID(), airline: "United Airlines", flightNumber: "UA 1567",
                    departureAirport: "ORD", arrivalAirport: "CUN",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 10, hour: 11, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 10, hour: 15, minute: 30))!,
+                   departureTime: d(34), arrivalTime: d(38.5),
                    price: 1800, pointsCost: 52000, cabinClass: .business, status: .scheduled),
-            // MIA -> São Paulo (GRU)
+
+            // MIA → São Paulo (GRU)
             Flight(id: UUID(), airline: "LATAM", flightNumber: "LA 8180",
                    departureAirport: "MIA", arrivalAirport: "GRU",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 2, day: 10, hour: 21, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 2, day: 11, hour: 8, minute: 30))!,
+                   departureTime: d(40), arrivalTime: d(49),
                    price: 2800, pointsCost: 82000, cabinClass: .business, status: .scheduled),
             Flight(id: UUID(), airline: "American Airlines", flightNumber: "AA 953",
                    departureAirport: "MIA", arrivalAirport: "GRU",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 2, day: 10, hour: 19, minute: 45))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 2, day: 11, hour: 7, minute: 0))!,
+                   departureTime: d(36), arrivalTime: d(45),
                    price: 750, pointsCost: 35000, cabinClass: .economy, status: .scheduled),
-            // SEA -> Reykjavik (KEF)
+
+            // SEA → Reykjavik (KEF)
             Flight(id: UUID(), airline: "Icelandair", flightNumber: "FI 680",
                    departureAirport: "SEA", arrivalAirport: "KEF",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: 1, hour: 16, minute: 30))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: 2, hour: 6, minute: 0))!,
+                   departureTime: d(44), arrivalTime: d(52.5),
                    price: 580, pointsCost: 25000, cabinClass: .economy, status: .scheduled),
             Flight(id: UUID(), airline: "Delta Air Lines", flightNumber: "DL 208",
                    departureAirport: "SEA", arrivalAirport: "KEF",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: 1, hour: 20, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 11, day: 2, hour: 9, minute: 15))!,
+                   departureTime: d(42), arrivalTime: d(50),
                    price: 2400, pointsCost: 70000, cabinClass: .business, status: .scheduled),
-            // JFK -> Bali (DPS) via Singapore
+
+            // JFK → Bali (DPS)
             Flight(id: UUID(), airline: "Singapore Airlines", flightNumber: "SQ 25",
                    departureAirport: "JFK", arrivalAirport: "DPS",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 3, day: 1, hour: 23, minute: 45))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 3, day: 3, hour: 11, minute: 30))!,
+                   departureTime: d(48), arrivalTime: d(68),
                    price: 4500, pointsCost: 120000, cabinClass: .business, status: .scheduled),
-            // LAX -> Marrakech (RAK) via Paris
+
+            // LAX → Marrakech (RAK)
             Flight(id: UUID(), airline: "Air France", flightNumber: "AF 69",
                    departureAirport: "LAX", arrivalAirport: "RAK",
-                   departureTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 5, hour: 16, minute: 0))!,
-                   arrivalTime: Calendar.current.date(from: DateComponents(year: 2025, month: 10, day: 6, hour: 15, minute: 45))!,
-                   price: 1200, pointsCost: 52000, cabinClass: .economy, status: .scheduled)
+                   departureTime: d(32), arrivalTime: d(46),
+                   price: 1200, pointsCost: 52000, cabinClass: .economy, status: .scheduled),
         ]
     }
 

@@ -32,4 +32,8 @@ class APIFlightService: FlightServiceProtocol {
                      departureTime: Date(), arrivalTime: Date(),
                      price: 0, pointsCost: 0, cabinClass: .economy, status: .cancelled)
     }
+
+    func getLiveFlightStatus(flightId: UUID) async -> FlightStatusInfo? {
+        return try? await client.get("/api/v1/flights/\(flightId)/status")
+    }
 }

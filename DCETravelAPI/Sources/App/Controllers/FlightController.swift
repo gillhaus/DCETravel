@@ -114,9 +114,17 @@ struct FlightController: RouteCollection {
 
     struct FlightStatusResponse: Content {
         let flightNumber: String
+        let airline: String
+        let departureAirport: String
+        let arrivalAirport: String
         let status: Flight.FlightStatus
         let departureTime: Date
         let arrivalTime: Date
+        let gate: String?
+        let terminal: String?
+        let baggageClaim: String?
+        let delayMinutes: Int?
+        let progressPercent: Double?
     }
 
     func status(req: Request) throws -> FlightStatusResponse {
@@ -127,11 +135,79 @@ struct FlightController: RouteCollection {
             throw Abort(.notFound, reason: "Flight not found")
         }
 
+        return computeLiveStatus(for: flight)
+    }
+
+    private func computeLiveStatus(for flight: Flight) -> FlightStatusResponse {
+        let now = Date()
+        let hash = abs(flight.flightNumber.hashValue)
+        let timeToDepart = flight.departureTime.timeIntervalSince(now)
+        let timeToArrive = flight.arrivalTime.timeIntervalSince(now)
+        let flightDuration = flight.arrivalTime.timeIntervalSince(flight.departureTime)
+
+        // Deterministic delay: ~14% of flights (hash % 7 == 0)
+        let isDelayed = hash % 7 == 0
+        let delayMinutes = isDelayed ? ((hash % 4) + 1) * 15 : 0
+
+        // Gate and terminal assignment
+        let letters = ["A", "B", "C"]
+        var gate = flight.gate
+        var terminal = flight.terminal
+        if timeToDepart <= 3 * 3600 && timeToDepart > 0 {
+            if gate == nil {
+                gate = "\((hash % 60) + 1)\(letters[hash % 3])"
+            }
+            if terminal == nil {
+                terminal = "Terminal \((hash % 8) + 1)"
+            }
+        }
+
+        // Baggage claim for landed flights
+        var baggageClaim = flight.baggageClaim
+        if timeToArrive <= 0 && baggageClaim == nil {
+            baggageClaim = "\(letters[hash % 3])\((hash % 20) + 1)"
+        }
+
+        // Compute live status
+        let liveStatus: Flight.FlightStatus
+        var progressPercent: Double? = nil
+
+        if flight.status == .cancelled {
+            liveStatus = .cancelled
+        } else if timeToDepart > 3 * 3600 {
+            // More than 3h to departure
+            liveStatus = isDelayed ? .delayed : .scheduled
+        } else if timeToDepart > 45 * 60 {
+            // 3h to 45min before departure
+            liveStatus = isDelayed ? .delayed : .checkIn
+        } else if timeToDepart > 0 {
+            // Last 45min before departure
+            liveStatus = .boarding
+        } else if timeToArrive > 0 {
+            // In the air
+            liveStatus = .inFlight
+            if flightDuration > 0 {
+                let elapsed = flightDuration - timeToArrive
+                progressPercent = min(max(elapsed / flightDuration, 0.0), 1.0)
+            }
+        } else {
+            // Past arrival
+            liveStatus = .landed
+        }
+
         return FlightStatusResponse(
             flightNumber: flight.flightNumber,
-            status: flight.status,
+            airline: flight.airline,
+            departureAirport: flight.departureAirport,
+            arrivalAirport: flight.arrivalAirport,
+            status: liveStatus,
             departureTime: flight.departureTime,
-            arrivalTime: flight.arrivalTime
+            arrivalTime: flight.arrivalTime,
+            gate: gate,
+            terminal: terminal,
+            baggageClaim: baggageClaim,
+            delayMinutes: delayMinutes > 0 ? delayMinutes : nil,
+            progressPercent: progressPercent
         )
     }
 }

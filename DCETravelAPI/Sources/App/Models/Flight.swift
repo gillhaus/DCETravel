@@ -13,6 +13,9 @@ struct Flight: Identifiable, Codable {
     var pointsCost: Int
     var cabinClass: CabinClass
     var status: FlightStatus
+    var gate: String?
+    var terminal: String?
+    var baggageClaim: String?
 
     var durationText: String {
         let interval = arrivalTime.timeIntervalSince(departureTime)
@@ -30,6 +33,7 @@ struct Flight: Identifiable, Codable {
 
     enum FlightStatus: String, Codable {
         case scheduled = "Scheduled"
+        case checkIn = "Check-in Open"
         case delayed = "Delayed"
         case boarding = "Boarding"
         case inFlight = "In Flight"

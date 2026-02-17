@@ -109,6 +109,7 @@
 		A1B2C3D4E5F60201AABB0002 /* ConciergeHeroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0002 /* ConciergeHeroCard.swift */; };
 		A1B2C3D4E5F60201AABB0003 /* ConciergeHighlightCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0003 /* ConciergeHighlightCard.swift */; };
 		A1B2C3D4E5F60201AABB0004 /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60101AABB0004 /* ProfileSheetView.swift */; };
+		F1A2B3C4D5E60201AABB0001 /* FlightStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A2B3C4D5E60101AABB0001 /* FlightStatusCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,6 +216,7 @@
 		A1B2C3D4E5F60101AABB0002 /* ConciergeHeroCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeHeroCard.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60101AABB0003 /* ConciergeHighlightCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConciergeHighlightCard.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60101AABB0004 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
+		F1A2B3C4D5E60101AABB0001 /* FlightStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightStatusCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -244,6 +246,7 @@
 				7FDB79C95BE7AC40029F22F3 /* UpdateAlertCard.swift */,
 				A1B2C3D4E5F60101AABB0002 /* ConciergeHeroCard.swift */,
 				A1B2C3D4E5F60101AABB0003 /* ConciergeHighlightCard.swift */,
+				F1A2B3C4D5E60101AABB0001 /* FlightStatusCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				A1B2C3D4E5F60201AABB0001 /* HomeViewModel.swift in Sources */,
 				A1B2C3D4E5F60201AABB0002 /* ConciergeHeroCard.swift in Sources */,
 				A1B2C3D4E5F60201AABB0003 /* ConciergeHighlightCard.swift in Sources */,
+				F1A2B3C4D5E60201AABB0001 /* FlightStatusCard.swift in Sources */,
 				A1B2C3D4E5F60201AABB0004 /* ProfileSheetView.swift in Sources */,
 );
 			runOnlyForDeploymentPostprocessing = 0;
